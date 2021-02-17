@@ -36,7 +36,7 @@ public class HistoryFragment extends Fragment {
     /**
      * The line chart where the data will be shown
      */
-    private LineChart mpLineChart;
+//    private LineChart mpLineChart;
 
     /**
      * The UI list of the data
@@ -55,14 +55,14 @@ public class HistoryFragment extends Fragment {
         initMap();
 
         //********************************Creation of the line chart*******************************/
-        mpLineChart = root.findViewById(R.id.line_chart);
+//        mpLineChart = root.findViewById(R.id.line_chart);
         final ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         if(!records.isEmpty() ){
             LineDataSet lineDataSet = new LineDataSet(dataValues(records.get(0)), records.get(0).getName());
             setLineData(lineDataSet);
             dataSets.add((lineDataSet));
             final LineData data = new LineData(dataSets);
-            mpLineChart.setData(data);
+//            mpLineChart.setData(data);
         }
 
         //***********************************Creation of the list**********************************/
@@ -71,20 +71,20 @@ public class HistoryFragment extends Fragment {
                 android.R.layout.simple_list_item_1, records);
         listview.setAdapter(adapter);
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {                     //Sets the action on a line click
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dataSets.clear();
-                LineDataSet tmpLineDataSet = new LineDataSet(dataValues(records.get(position)), records.get(position).getName());
-                setLineData(tmpLineDataSet);
-                dataSets.add(tmpLineDataSet);
-                LineData data = new LineData(dataSets);
-                mpLineChart.setData(data);
-                mpLineChart.invalidate();
-            }
+//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {                     //Sets the action on a line click
+//            @SuppressLint("ResourceAsColor")
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                dataSets.clear();
+//                LineDataSet tmpLineDataSet = new LineDataSet(dataValues(records.get(position)), records.get(position).getName());
+//                setLineData(tmpLineDataSet);
+//                dataSets.add(tmpLineDataSet);
+//                LineData data = new LineData(dataSets);
+////                mpLineChart.setData(data);
+////                mpLineChart.invalidate();
+//            }
 
-        });
+//        });
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, final long id) {
@@ -111,9 +111,9 @@ public class HistoryFragment extends Fragment {
                 return false;
             }
         });
-        setChart(mpLineChart);
-        mpLineChart.setDrawGridBackground(false);
-        mpLineChart.invalidate();
+//        setChart(mpLineChart);
+//        mpLineChart.setDrawGridBackground(false);
+//        mpLineChart.invalidate();
         return root;
     }
 
@@ -135,7 +135,11 @@ public class HistoryFragment extends Fragment {
      */
     private ArrayList<Entry> dataValues(Record recordIn){
         ArrayList<Entry> dataVals = new ArrayList<>();
-        dataVals.add(new Entry((float)recordIn.getJitter(), (float)recordIn.getShimmer()));
+        dataVals.add(new Entry((float)recordIn.getJitter()*100, (float)recordIn.getShimmer()*100));
+        System.out.println("(float)recordIn.getJitter()*100");
+        System.out.println((float)recordIn.getJitter()*100);
+        System.out.println("(float)recordIn.getShimmer()*100");
+        System.out.println((float)recordIn.getShimmer()*100);
         return dataVals;
     }
 
@@ -150,29 +154,29 @@ public class HistoryFragment extends Fragment {
      * Set the graphic feature of the line chart
      * @param chart the chart to be set
      */
-    private void setChart(LineChart chart){
-
-        YAxis yAxis = chart.getAxisLeft();                      //The line chart's y axis
-        XAxis xAxis = chart.getXAxis();                         //The line chart's x axis
-
-        chart.getAxisRight().setEnabled(false);                 //Disable the right axis
-
-        //Set the y axis property
-        yAxis.setAxisLineWidth(2.5f);
-        yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(10f);
-        yAxis.setTextSize(12f);
-
-        //Set the x axis property
-        xAxis.setAxisLineWidth(2f);
-        xAxis.setAxisLineColor(Color.BLACK);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setAxisMinimum(0f);
-        xAxis.setAxisMaximum(3f);
-        xAxis.setTextSize(12f);
-
-        chart.getLegend().setEnabled(false);
-        chart.getDescription().setEnabled(false);
-    }
+//    private void setChart(LineChart chart){
+//
+//        YAxis yAxis = chart.getAxisLeft();                      //The line chart's y axis
+//        XAxis xAxis = chart.getXAxis();                         //The line chart's x axis
+//
+//        chart.getAxisRight().setEnabled(false);                 //Disable the right axis
+//
+//        //Set the y axis property
+//        yAxis.setAxisLineWidth(2.5f);
+//        yAxis.setAxisLineColor(Color.BLACK);
+//        yAxis.setAxisMinimum(0f);
+//        yAxis.setAxisMaximum(5f);
+//        yAxis.setTextSize(12f);
+//
+//        //Set the x axis property
+//        xAxis.setAxisLineWidth(2f);
+//        xAxis.setAxisLineColor(Color.BLACK);
+//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+//        xAxis.setAxisMinimum(0f);
+//        xAxis.setAxisMaximum(3f);
+//        xAxis.setTextSize(12f);
+//
+//        chart.getLegend().setEnabled(false);
+//        chart.getDescription().setEnabled(false);
+//    }
 }
