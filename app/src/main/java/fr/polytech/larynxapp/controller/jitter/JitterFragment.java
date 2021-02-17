@@ -1,4 +1,4 @@
-package fr.polytech.larynxapp.controller.jitter_hnr;
+package fr.polytech.larynxapp.controller.jitter;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -27,12 +27,11 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class JitterHnrFragment extends Fragment {
+public class JitterFragment extends Fragment {
 
     /**
      * The line chart where the shimmer values will be shown
@@ -83,54 +82,17 @@ public class JitterHnrFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_jitter_hnr, container, false);    //Sets the view the the fragment
+        View root = inflater.inflate(R.layout.fragment_jitter,container, false);    //Sets the view the the fragment
 
 
         records = new DBManager(getContext()).query();
 
         startDateButton = root.findViewById(R.id.startDate);
         endDateButton = root.findViewById(R.id.endDate);
-
         initDateButton();
-        //******************************Creation of the shimmer's chart*****************************/
-        final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
-        shimmerTextView.setText("Jitter");
-        shimmerTextView.setTextSize(20f);
-
-
-        shimmerMpLineChart = root.findViewById(R.id.shimmer_line_chart);
-        setShimmerChart(shimmerMpLineChart);
-
-        LineDataSet shimmerLineSet = new LineDataSet(shimmerDataValues(), "Shimmer");
-        shimmerLineSet.setColor(Color.BLACK);
-        shimmerLineSet.setLineWidth(2f);
-        shimmerLineSet.setCircleColor(Color.BLACK);
-        shimmerLineSet.setCircleRadius(5f);
-        shimmerLineSet.setCircleHoleRadius(2.5f);
-        shimmerLineSet.setValueTextSize(0f);
-        ArrayList<ILineDataSet> shimmerDataSets = new ArrayList<>();
-        shimmerDataSets.add((shimmerLineSet));
-
-        LimitLine shimmerLl = new LimitLine(3.8f);
-        shimmerLl.setLabel("Limite shimmer");
-        shimmerLl.setLineColor(Color.RED);
-        shimmerMpLineChart.getAxisLeft().addLimitLine(shimmerLl);
-
-        XAxis shimmerXAxis = shimmerMpLineChart.getXAxis();
-        shimmerXAxis.setGranularity(1f);
-        shimmerXAxis.setSpaceMax(0.1f);
-        shimmerXAxis.setSpaceMin(0.1f);
-        shimmerXAxis.setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(dateValues()));
-
-
-        LineData shimmerData = new LineData(shimmerDataSets);
-        shimmerMpLineChart.setData(shimmerData);
-        shimmerMpLineChart.invalidate();
-        shimmerMpLineChart.setDrawGridBackground(false);
-
         //******************************Creation of the jitter's chart******************************/
         final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
-        jitterTextView.setText("HNR");
+        jitterTextView.setText("Jitter");
         jitterTextView.setTextSize(20f);
 
         jitterMpLineChart = root.findViewById(R.id.jitter_line_chart);

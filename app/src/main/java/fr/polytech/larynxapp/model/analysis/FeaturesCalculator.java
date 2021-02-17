@@ -136,7 +136,6 @@ public class FeaturesCalculator {
 	 * @return the Shimmer
 	 */
 	public double getShimmer() {
-
 		int           minAmp     = 0;
 		int           maxAmp;
 		double          amplitudeDiffSum = 0; // sum of difference between every two peak-to-peak amplitudes
@@ -146,7 +145,6 @@ public class FeaturesCalculator {
 		List<Integer> ampPk2Pk   = new ArrayList<>(); // this list contains all the peak-to-peak amplitudes
 		double sum = 0;
 		for ( int i = 0; i < pitchPositions.size() - 1; i++ ) {
-
 			// get each pitch
 			maxAmp = data.get( pitchPositions.get( i ) );
 			for ( int j = pitchPositions.get( i ); j < pitchPositions.get( i + 1 ); j++ ) {
@@ -156,16 +154,14 @@ public class FeaturesCalculator {
 			}
 			amplitude = maxAmp - minAmp;
 			amplitudes.add(amplitude);
-
+			minAmp = 0;
 		}
 
 		for(int j = 0; j < amplitudes.size() - 1; j++){
 			double element = Math.abs(20*(Math.log(amplitudes.get(j+1)/amplitudes.get(j))/Math.log(10)));
 			sum = sum + element;
 		}
-
 		double result1 = sum/amplitudes.size();
-
 		return result1;
 
 	}
