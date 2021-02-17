@@ -18,15 +18,15 @@
         tools:layout="@layout/fragment_history" />
 
     <fragment
-        android:id="@+id/navigation_evolution"
+        android:id="@+id/navigation_Shimmer"
         android:name="fr.polytech.larynxapp.controller.evolution.EvolutionFragment"
-        android:label="@string/title_evolution"
-        tools:layout="@layout/fragment_evolution" />
+        android:label="Shimmer"
+        tools:layout="@layout/fragment_shimmer" />
 
     <fragment
-        android:id="@+id/navigation_jitter_hnr"
-        android:name="fr.polytech.larynxapp.controller.jitter_hnr.JitterHnrFragment"
-        android:label="Jitter_HNR"
-        tools:layout="@layout/fragment_jitter_hnr" />
+        android:id="@+id/navigation_Jitter"
+        android:name="fr.polytech.larynxapp.controller.jitter.JitterFragment"
+        android:label="Jitter"
+        tools:layout="@layout/fragment_jitter" />
 
 </navigation>

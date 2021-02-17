@@ -128,6 +128,11 @@ public class HomeFragment extends Fragment {
     private double jitter;
 
     /**
+     * The HNR value.
+     */
+    private double HNR;
+
+    /**
      * The record's fundamental frequency.
      */
     private double f0;
@@ -692,6 +697,9 @@ public class HomeFragment extends Fragment {
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
+            int test = inputStream.read();
+            System.out.println("test");
+            System.out.println(test);
             byte[] b = new byte[inputStream.available()];
             inputStream.read(b);
 
@@ -705,11 +713,6 @@ public class HomeFragment extends Fragment {
                 audioData.addData(ss);
                 //System.out.println(ss);
             }
-
-//            System.out.println("for 20 to 100:");
-//            for(int i = 20; i < 100; i++){
-//                System.out.println(s[i]);
-//            }
 
             audioData.setMaxAmplitudeAbs();
         }

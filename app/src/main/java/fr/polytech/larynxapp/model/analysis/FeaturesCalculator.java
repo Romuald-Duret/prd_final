@@ -156,59 +156,17 @@ public class FeaturesCalculator {
 			}
 			amplitude = maxAmp - minAmp;
 			amplitudes.add(amplitude);
-//			System.out.println(maxAmp);
-//			System.out.println(minAmp);
-//			System.out.println(Math.log(Math.abs(maxAmp)/Math.abs(minAmp)));
-//			double element = Math.abs(20 * Math.log(Math.abs(maxAmp)/Math.abs(minAmp)));
-//			System.out.println(element);
-//			elements.add(element);
 
-			// add peak-to-peak amplitude into the list
-			//ampPk2Pk.add( maxAmp - minAmp );
-			// reset the min amplitude
-			//minAmp = 0;
 		}
 
 		for(int j = 0; j < amplitudes.size() - 1; j++){
-//			System.out.println("amplitudes.get(j+1)");
-//			System.out.println(amplitudes.get(j+1));
-//			System.out.println("amplitudes.get(j)");
-//			System.out.println(amplitudes.get(j));
-//			double test1 = (amplitudes.get(j+1))/(amplitudes.get(j));
-//			System.out.println("amplitudes.get(j+1)/amplitudes.get(j)");
-//			System.out.println((amplitudes.get(j+1))/(amplitudes.get(j)));
-//
-//			System.out.println("Math.log(10)");
-//			System.out.println(Math.log(10));
-//
-//
-//			double test = Math.log(amplitudes.get(j+1)/amplitudes.get(j))/Math.log(10);
-//			System.out.println(test);
 			double element = Math.abs(20*(Math.log(amplitudes.get(j+1)/amplitudes.get(j))/Math.log(10)));
-//			System.out.println(element);
 			sum = sum + element;
 		}
 
 		double result1 = sum/amplitudes.size();
 
 		return result1;
-
-//		// SHIMMER FORMULA (RELATIVE)
-//		for ( int i = 0; i < ampPk2Pk.size() - 1; i++ ) {
-//			amplitudeDiffSum += Math.abs( ampPk2Pk.get( i ) - ampPk2Pk.get( i + 1 ) );
-//			amplitudeSum += ampPk2Pk.get( i );
-//		}
-//		// add the last peak-to-peak amplitude into sum
-//		if ( !ampPk2Pk.isEmpty() ) {
-//			amplitudeSum += ampPk2Pk.get( ampPk2Pk.size() - 1 );
-//		}
-//		// calculate shimmer (relative)
-//		double result = ( (double) amplitudeDiffSum / (periods.size() - 1) ) / ( (double) amplitudeSum / periods.size() );
-//
-//		System.out.println("shimmer");
-//		System.out.println(result);
-//		return result;
-
 
 	}
 
@@ -261,7 +219,6 @@ public class FeaturesCalculator {
 	 * To increase efficiency, this method only test the frequencies between 40Hz to 400Hz.
 	 */
 	private void calculatefundamentalFreq() {
-		//System.out.println("1111111111111111");
 		int count;
 		float f0 = 0;
 		System.out.println("pitches");
@@ -276,4 +233,5 @@ public class FeaturesCalculator {
 		else
 			fundamentalFreq = 0;
 	}
+
 }

@@ -12,13 +12,13 @@
         android:title="@string/title_history" />
 
     <item
-        android:id="@+id/navigation_evolution"
+        android:id="@+id/navigation_Shimmer"
         android:icon="@drawable/ic_trending_up_black_24dp"
-        android:title="@string/title_evolution" />
+        android:title="Shimmer" />
 
     <item
-        android:id="@+id/navigation_jitter_hnr"
+        android:id="@+id/navigation_Jitter"
         android:icon="@drawable/ic_trending_up_black_24dp"
-        android:title="Jitter_HNR" />
+        android:title="Jitter" />
 
 </menu>
