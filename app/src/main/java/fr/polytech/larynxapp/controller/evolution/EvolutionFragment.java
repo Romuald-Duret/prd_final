@@ -38,10 +38,6 @@ public class EvolutionFragment extends Fragment {
      */
     private LineChart shimmerMpLineChart;
 
-    /**
-     * The line chart where the jitter values will be shown
-     */
-    private LineChart jitterMpLineChart;
 
     /**
      * The list of record datas
@@ -53,11 +49,6 @@ public class EvolutionFragment extends Fragment {
      */
     private ImageButton startDateButton;
 
-
-    /**
-     * The endDate Button
-     */
-    private ImageButton endDateButton;
 
     /**
      * The startDate
@@ -73,12 +64,15 @@ public class EvolutionFragment extends Fragment {
     private int endDateMonth;
     private int endDateYear;
 
+
+    private String[] dateValues;
+
+    private ImageButton resetButton;
+
     /**
      * The datePicker
      */
     private DatePicker datePicker;
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,8 +83,8 @@ public class EvolutionFragment extends Fragment {
         records = new DBManager(getContext()).query();
 
         startDateButton = root.findViewById(R.id.startDate);
-        endDateButton = root.findViewById(R.id.endDate);
-
+        resetButton = root.findViewById(R.id.resetDate);
+        dateValues = dateValues();
         initDateButton();
         //******************************Creation of the shimmer's chart*****************************/
         final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
@@ -100,7 +94,11 @@ public class EvolutionFragment extends Fragment {
 
         shimmerMpLineChart = root.findViewById(R.id.shimmer_line_chart);
         setShimmerChart(shimmerMpLineChart);
- 
+        setShimmerChartData();
+        return root;
+    }
+
+    public void setShimmerChartData(){
         LineDataSet shimmerLineSet = new LineDataSet(shimmerDataValues(), "Shimmer");
         shimmerLineSet.setColor(Color.BLACK);
         shimmerLineSet.setLineWidth(2f);
@@ -127,43 +125,6 @@ public class EvolutionFragment extends Fragment {
         shimmerMpLineChart.setData(shimmerData);
         shimmerMpLineChart.invalidate();
         shimmerMpLineChart.setDrawGridBackground(false);
-
-        //******************************Creation of the jitter's chart******************************/
-//        final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
-//        jitterTextView.setText("Jitter");
-//        jitterTextView.setTextSize(20f);
-//
-//        jitterMpLineChart = root.findViewById(R.id.jitter_line_chart);
-//        setJitterChart(jitterMpLineChart);
-//
-//        LineDataSet jitterLineSet = new LineDataSet(jitterDataValues(), "Jitter");
-//        jitterLineSet.setColor(Color.BLACK);
-//        jitterLineSet.setLineWidth(2f);
-//        jitterLineSet.setCircleColor(Color.BLACK);
-//        jitterLineSet.setCircleRadius(5f);
-//        jitterLineSet.setCircleHoleRadius(2.5f);
-//        jitterLineSet.setValueTextSize(0f);
-//        ArrayList<ILineDataSet> jitterDataSets = new ArrayList<>();
-//        jitterDataSets.add((jitterLineSet));
-//
-//        LimitLine jitterLl = new LimitLine(2.04f);
-//        jitterLl.setLabel("Limite jitter");
-//        jitterLl.setLineColor(Color.RED);
-//        jitterMpLineChart.getAxisLeft().addLimitLine(jitterLl);
-//
-//        XAxis jitterXAxis = jitterMpLineChart.getXAxis();
-//        jitterXAxis.setGranularity(1f);
-//        jitterXAxis.setSpaceMax(0.1f);
-//        jitterXAxis.setSpaceMin(0.1f);
-//        jitterXAxis.setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(dateValues()));
-//
-//        LineData jitterData = new LineData(jitterDataSets);
-//        jitterMpLineChart.setData(jitterData);
-//        jitterMpLineChart.invalidate();
-//        jitterMpLineChart.setDrawGridBackground(false);
-
-
-        return root;
     }
 
     /**
@@ -189,6 +150,7 @@ public class EvolutionFragment extends Fragment {
         }
         return dataVals;
     }
+
 
     /**
      * Initialisation of the dates arraylist
@@ -223,7 +185,6 @@ public class EvolutionFragment extends Fragment {
         yAxis.setAxisMinimum(0f);
         yAxis.setAxisMaximum(1f);
         yAxis.setTextSize(12f);
-
 
         //Set the x axis property
         xAxis.setAxisLineWidth(1f);
@@ -270,10 +231,11 @@ public class EvolutionFragment extends Fragment {
         chart.setTouchEnabled(false);
     }
 
-    private void initDateButton() {
+    public void initDateButton() {
         startDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                records = new DBManager(getContext()).query();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
@@ -282,34 +244,110 @@ public class EvolutionFragment extends Fragment {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                startDateYear = year;
-                                startDateMonth = month + 1;
-                                startDateDay = day;
+                                setStartDateYear(year);
+                                setStartDateMonth(month+1);
+                                setStartDateDay(day);
+                                String dateDay = String.valueOf(day);
+                                String dateMonth = String.valueOf(month+1);
+                                if(day < 10){
+                                    dateDay = "0" + dateDay;
+                                }
+                                if(month < 10){
+                                    dateMonth = "0" + dateMonth;
+                                }
+
+                                String test = dateDay +"-" + dateMonth + "-" + year;
+
+                                for(int i = 0; i < records.size(); i++){
+                                    System.out.println("tmp");
+                                    String tmp = records.get(i).getName().split(" ")[0];
+                                    System.out.println(tmp);
+                                    System.out.println("test");
+                                    System.out.println(test);
+                                    if(!test.equals(tmp)){
+                                        records.remove(i);
+                                        i--;
+                                    }
+                                }
+                                System.out.println("～～～～～～～～～～");
+                                for(int i = 0; i < records.size(); i++){
+                                    System.out.println("records.get(i).getName()");
+                                    System.out.println(records.get(i).getName());
+                                }
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();
             }
         });
 
-        endDateButton.setOnClickListener(new View.OnClickListener() {
+        resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                endDateYear = year;
-                                endDateMonth = month + 1;
-                                endDateDay = day;
-                            }
-                        }, year, month, dayOfMonth);
-                datePickerDialog.show();
+                setShimmerChartData();
+//                view.invalidate();
+                for(int i = 0; i < records.size(); i ++){
+                    System.out.println(records.get(i).getName());
+                }
+                System.out.println("view has been invalidate");
             }
         });
+
+    }
+
+    public int getStartDateYear() {
+        return startDateYear;
+    }
+
+    public void setStartDateYear(int startDateYear) {
+        this.startDateYear = startDateYear;
+    }
+
+    public int getStartDateMonth() {
+        return startDateMonth;
+    }
+
+    public void setStartDateMonth(int startDateMonth) {
+        this.startDateMonth = startDateMonth;
+    }
+
+    public int getStartDateDay() {
+        return startDateDay;
+    }
+
+    public void setStartDateDay(int startDateDay) {
+        this.startDateDay = startDateDay;
+    }
+
+    public int getEndDateDay() {
+        return endDateDay;
+    }
+
+    public void setEndDateDay(int endDateDay) {
+        this.endDateDay = endDateDay;
+    }
+
+    public int getEndDateMonth() {
+        return endDateMonth;
+    }
+
+    public void setEndDateMonth(int endDateMonth) {
+        this.endDateMonth = endDateMonth;
+    }
+
+    public int getEndDateYear() {
+        return endDateYear;
+    }
+
+    public void setEndDateYear(int endDateYear) {
+        this.endDateYear = endDateYear;
+    }
+
+    public String[] getDateValues() {
+        return dateValues;
+    }
+
+    public void setDateValues(String[] dateValues) {
+        this.dateValues = dateValues;
     }
 }
 

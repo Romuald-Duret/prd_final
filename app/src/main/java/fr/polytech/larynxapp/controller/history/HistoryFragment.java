@@ -47,22 +47,20 @@ public class HistoryFragment extends Fragment {
      * The list of record datas
      */
     private List<Record> records;
-
-
+    
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_history, container, false);      //Sets the view for the fragment
         initMap();
 
         //********************************Creation of the line chart*******************************/
-//        mpLineChart = root.findViewById(R.id.line_chart);
         final ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         if(!records.isEmpty() ){
             LineDataSet lineDataSet = new LineDataSet(dataValues(records.get(0)), records.get(0).getName());
             setLineData(lineDataSet);
             dataSets.add((lineDataSet));
             final LineData data = new LineData(dataSets);
-//            mpLineChart.setData(data);
+
         }
 
         //***********************************Creation of the list**********************************/
@@ -71,20 +69,7 @@ public class HistoryFragment extends Fragment {
                 android.R.layout.simple_list_item_1, records);
         listview.setAdapter(adapter);
 
-//        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {                     //Sets the action on a line click
-//            @SuppressLint("ResourceAsColor")
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                dataSets.clear();
-//                LineDataSet tmpLineDataSet = new LineDataSet(dataValues(records.get(position)), records.get(position).getName());
-//                setLineData(tmpLineDataSet);
-//                dataSets.add(tmpLineDataSet);
-//                LineData data = new LineData(dataSets);
-////                mpLineChart.setData(data);
-////                mpLineChart.invalidate();
-//            }
 
-//        });
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, final long id) {
@@ -150,33 +135,5 @@ public class HistoryFragment extends Fragment {
         records = new DBManager(getContext()).query();
     }
 
-    /**
-     * Set the graphic feature of the line chart
-     * @param chart the chart to be set
-     */
-//    private void setChart(LineChart chart){
-//
-//        YAxis yAxis = chart.getAxisLeft();                      //The line chart's y axis
-//        XAxis xAxis = chart.getXAxis();                         //The line chart's x axis
-//
-//        chart.getAxisRight().setEnabled(false);                 //Disable the right axis
-//
-//        //Set the y axis property
-//        yAxis.setAxisLineWidth(2.5f);
-//        yAxis.setAxisLineColor(Color.BLACK);
-//        yAxis.setAxisMinimum(0f);
-//        yAxis.setAxisMaximum(5f);
-//        yAxis.setTextSize(12f);
-//
-//        //Set the x axis property
-//        xAxis.setAxisLineWidth(2f);
-//        xAxis.setAxisLineColor(Color.BLACK);
-//        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-//        xAxis.setAxisMinimum(0f);
-//        xAxis.setAxisMaximum(3f);
-//        xAxis.setTextSize(12f);
-//
-//        chart.getLegend().setEnabled(false);
-//        chart.getDescription().setEnabled(false);
-//    }
+
 }

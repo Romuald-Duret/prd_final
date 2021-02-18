@@ -34,11 +34,6 @@ import java.util.List;
 public class JitterFragment extends Fragment {
 
     /**
-     * The line chart where the shimmer values will be shown
-     */
-    private LineChart shimmerMpLineChart;
-
-    /**
      * The line chart where the jitter values will be shown
      */
     private LineChart jitterMpLineChart;
@@ -54,10 +49,7 @@ public class JitterFragment extends Fragment {
     private ImageButton startDateButton;
 
 
-    /**
-     * The endDate Button
-     */
-    private ImageButton endDateButton;
+    private ImageButton resetButton;
 
     /**
      * The startDate
@@ -88,7 +80,7 @@ public class JitterFragment extends Fragment {
         records = new DBManager(getContext()).query();
 
         startDateButton = root.findViewById(R.id.startDate);
-        endDateButton = root.findViewById(R.id.endDate);
+        resetButton = root.findViewById(R.id.resetDate);
         initDateButton();
         //******************************Creation of the jitter's chart******************************/
         final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
@@ -97,7 +89,11 @@ public class JitterFragment extends Fragment {
 
         jitterMpLineChart = root.findViewById(R.id.jitter_line_chart);
         setJitterChart(jitterMpLineChart);
+        setJitterChartData();
+        return root;
+    }
 
+    public void setJitterChartData(){
         LineDataSet jitterLineSet = new LineDataSet(jitterDataValues(), "Jitter");
         jitterLineSet.setColor(Color.BLACK);
         jitterLineSet.setLineWidth(2f);
@@ -123,9 +119,6 @@ public class JitterFragment extends Fragment {
         jitterMpLineChart.setData(jitterData);
         jitterMpLineChart.invalidate();
         jitterMpLineChart.setDrawGridBackground(false);
-
-
-        return root;
     }
 
     /**
@@ -236,6 +229,7 @@ public class JitterFragment extends Fragment {
         startDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                records = new DBManager(getContext()).query();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
@@ -247,31 +241,42 @@ public class JitterFragment extends Fragment {
                                 startDateYear = year;
                                 startDateMonth = month + 1;
                                 startDateDay = day;
+
+                                String dateDay = String.valueOf(day);
+                                String dateMonth = String.valueOf(month+1);
+                                if(day < 10){
+                                    dateDay = "0" + dateDay;
+                                }
+                                if(month < 10){
+                                    dateMonth = "0" + dateMonth;
+                                }
+
+                                String test = dateDay +"-" + dateMonth + "-" + year;
+
+                                for(int i = 0; i < records.size(); i++){
+                                    System.out.println("tmp");
+                                    String tmp = records.get(i).getName().split(" ")[0];
+                                    System.out.println(tmp);
+                                    System.out.println("test");
+                                    System.out.println(test);
+                                    if(!test.equals(tmp)){
+                                        records.remove(i);
+                                        i--;
+                                    }
+                                }
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();
             }
         });
 
-        endDateButton.setOnClickListener(new View.OnClickListener() {
+        resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                endDateYear = year;
-                                endDateMonth = month + 1;
-                                endDateDay = day;
-                            }
-                        }, year, month, dayOfMonth);
-                datePickerDialog.show();
+                setJitterChartData();
             }
         });
+
     }
 }
 
