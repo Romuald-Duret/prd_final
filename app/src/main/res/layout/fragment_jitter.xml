@@ -107,8 +107,7 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/jitter_line_chart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shimmer_line_chart" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/dateLabel"
