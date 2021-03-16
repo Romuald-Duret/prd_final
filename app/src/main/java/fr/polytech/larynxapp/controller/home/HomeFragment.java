@@ -3,13 +3,9 @@ package fr.polytech.larynxapp.controller.home;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
-import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
-import android.media.AudioManager;
 import android.net.Uri;
-import android.os.FileUtils;
 import android.provider.MediaStore;
-import android.widget.Toast;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -48,6 +44,7 @@ import java.nio.ByteOrder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -56,7 +53,6 @@ import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
 import be.tarsos.dsp.io.TarsosDSPAudioFormat;
 
-import be.tarsos.dsp.io.android.AndroidFFMPEGLocator;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.pitch.PitchDetectionHandler;
 import be.tarsos.dsp.pitch.PitchDetectionResult;
@@ -252,9 +248,9 @@ public class HomeFragment extends Fragment {
                 button_file.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);//意图：文件浏览器
-                        intent.setType("*/*");//无类型限制
-                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);//关键！多选参数
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        intent.setType("*/*");
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
 //                        intent.addCategory(Intent.CATEGORY_OPENABLE);
                         startActivityForResult(intent, 1);
                     }
@@ -313,111 +309,59 @@ public class HomeFragment extends Fragment {
                 break;
 
             case FILE_FINISH:
-                analysePitchFromFile();
+//                analysePitchFromFile();
                 updateView(Status_mic.DEFAULT);
                 break;
         }
     }
 
-    private void analysePitchFromFile(){
-
-        pitches = new ArrayList<>();
-//        try {
-//            FileInputStream fin = new FileInputStream (new File(finalPath));
-//
-//            TarsosDSPAudioFormat tarsosDSPAudioFormat = new TarsosDSPAudioFormat(
+//    private void analysePitchFromFile(){
+//                System.out.println(finalPath);
+//                try {
+//                    System.out.println("finalPath");
+//                    System.out.println(finalPath);
+//                    InputStream inStream = new FileInputStream(finalPath);
+//                    byte[] b = new byte[inStream.available()];
+//                    inStream.read(b);
+//                    System.out.println("b");
+//                    System.out.println(Arrays.toString(b));
+////                    System.out.println(inStream.);
+//                    TarsosDSPAudioFormat tarsosDSPAudioFormat = new TarsosDSPAudioFormat(
 //                    44100,
 //                    16,
 //                    1,
 //                    true,
 //                    ByteOrder.LITTLE_ENDIAN.equals(ByteOrder.nativeOrder()));
-//            dispatcher = new AudioDispatcher(new UniversalAudioInputStream(fin, tarsosDSPAudioFormat), 2048, 0);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//        File file = new File(FILE_PATH + File.separator + FILE_NAME);
-//        RandomAccessFile randomAccessFile = null;
-//        try {
-//            randomAccessFile = new RandomAccessFile(file,"rw");
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        AudioProcessor recordProcessor = new WriterProcessor(AUDIO_FORMAT, randomAccessFile);
-//        dispatcher.addAudioProcessor(recordProcessor);
-//
-//        PitchDetectionHandler pitchDetectionHandler = new PitchDetectionHandler() {
-//            @Override
-//            public void handlePitch(PitchDetectionResult res, AudioEvent e){
-//                float pitchInHz = res.getPitch();
-//                System.out.println(pitchInHz);
-//                if(pitchInHz != -1 && pitchInHz < 400)
-//                    pitches.add(pitchInHz);
-//            }
-//        };
-//
-//        AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
-//        dispatcher.addAudioProcessor(pitchProcessor);
-//
-//
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                long startTime = System.nanoTime();
-//                long endTime = System.nanoTime();// start dispatcher
-//                Thread thread = new Thread(dispatcher, "Audio Dispatcher");
-//                thread.start();
-//                while (endTime - startTime < 5000000000L && status_mic_button == Status_mic.RECORDING) {
-//                    progressBar.setProgress(Math.round((endTime - startTime) / 50000000f));
-//                    try {
-//                        Thread.sleep(10);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    endTime = System.nanoTime();
-//                }
-//                if (endTime - startTime >= 5000000000L) {
-//                    getActivity().runOnUiThread(new Runnable() {
+//                    dispatcher = new AudioDispatcher(new UniversalAudioInputStream(inStream, tarsosDSPAudioFormat), 2048, 1);
+//                    PitchDetectionHandler pitchDetectionHandler = new PitchDetectionHandler() {
 //                        @Override
-//                        public void run() {
-//                            stopRecording();
-//                            updateView(Status_mic.FINISH);
-//                        }
-//                    });
-//                }
-//            }
-//        }).start();
-
-//        AndroidFFMPEGLocator androidFFMPEGLocator = new AndroidFFMPEGLocator(getContext());
-        new AndroidFFMPEGLocator(getContext());
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println(finalPath);
-                dispatcher = AudioDispatcherFactory.fromPipe(finalPath,44100,2048,0);
-                PitchDetectionHandler pitchDetectionHandler = new PitchDetectionHandler() {
-                    @Override
-                    public void handlePitch(PitchDetectionResult res, AudioEvent e){
-
-                        float pitchInHz = res.getPitch();
-
-                        if(pitchInHz != -1 && pitchInHz < 400)
-                            pitches.add(pitchInHz);
-                    }
-                };
+//                        public void handlePitch(PitchDetectionResult res, AudioEvent e){
 //
-                AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
-                dispatcher.addAudioProcessor(pitchProcessor);
+//                            float pitchInHz = res.getPitch();
+//                            System.out.println("pitchInHz");
+//                            System.out.println(pitchInHz);
+//
+//                            if(pitchInHz != -1 && pitchInHz < 400)
+//                                pitches.add(pitchInHz);
+//
+//
+//                        }
+//                    };
+//                    AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
+//                    dispatcher.addAudioProcessor(pitchProcessor);
+//
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                Thread thread = new Thread(dispatcher, "file Dispatcher");
+//                thread.start();
+//                System.out.println("pitches.size()");
+//                System.out.println(pitches.size());
+//    }
 
-                dispatcher.run();
-                //System.out.println(pitches);
 
-            }
-        }).start();
-
-    }
 
     /**
      * Starts the recording
@@ -428,7 +372,6 @@ public class HomeFragment extends Fragment {
             if ( !folder.exists() ) {
                 folder.mkdirs();
             }
-
             dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(44100, 2048, 0);
 
             File file = new File(FILE_PATH + File.separator + FILE_NAME);
@@ -451,10 +394,7 @@ public class HomeFragment extends Fragment {
                         pitches.add(pitchInHz);
 
                     }
-
-
                 }
-
             };
 
             AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
@@ -676,9 +616,9 @@ public class HomeFragment extends Fragment {
     public void analyseData() {
         AudioData audioData = new AudioData();
         boolean fileOK;
-        if(file == null){
+//        if(file == null){
             file = new File(finalPath);
-        }
+//        }
 
         try {
             if (!file.exists())
@@ -697,12 +637,15 @@ public class HomeFragment extends Fragment {
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
+            System.out.println("file.getAbsolutePath()");
+            System.out.println(file.getAbsolutePath());
             int test = inputStream.read();
             System.out.println("test");
             System.out.println(test);
             byte[] b = new byte[inputStream.available()];
             inputStream.read(b);
-
+            System.out.println("b");
+            System.out.println(Arrays.toString(b));
             short[] s = new short[(b.length - 44) / 2];
             ByteBuffer.wrap(b)
                     .order(ByteOrder.LITTLE_ENDIAN)
@@ -734,18 +677,10 @@ public class HomeFragment extends Fragment {
 
         audioData.processData();
 
-        System.out.println("pitches");
-        System.out.println(pitches);
         FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData, pitches,getContext());
 
         this.shimmer = featuresCalculator.getShimmer();
         this.jitter = featuresCalculator.getJitter();
-
-        System.out.println("shimmer");
-        System.out.println(shimmer);
-
-        System.out.println("jitter");
-        System.out.println(jitter);
 
 
         f0 = featuresCalculator.getfundamentalFreq();
@@ -808,8 +743,7 @@ public class HomeFragment extends Fragment {
         return path;
     }
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
+    private File createWavFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String wavFileName = "NEWLOAD_" + timeStamp + "_";
         File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -819,8 +753,6 @@ public class HomeFragment extends Fragment {
                 storageDir      /* directory */
         );
 
-        // Save a file: path for use with ACTION_VIEW intents
-        String CurrentPath = wav.getAbsolutePath();
         return wav;
     }
 
@@ -835,41 +767,29 @@ public class HomeFragment extends Fragment {
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (data.getData() != null) {
-                //单次点击未使用多选的情况
                 try {
-//                    String path = uri.getPath();
-                    //TODO 对获得的uri做解析，这部分在另一篇文章讲解
-                    //String path = getPath(getApplicationContext(),uri);
-                    //TODO 对转换得到的真实路径path做相关处理
-                    file = createImageFile();
+                    file = createWavFile();
                     InputStream inputStream = getActivity().getContentResolver().openInputStream(data.getData());
                     FileOutputStream fileOutputStream = new FileOutputStream(file);
                     copyStream(inputStream, fileOutputStream);
                     fileOutputStream.close();
                     inputStream.close();
 
-//                    finalPath = path;
-                    //System.out.println("aaaaaaaaaaaaaaasdsdsdsdssds");
-                    //System.out.println(file.getAbsolutePath());
                     finalPath = file.getAbsolutePath();
                     updateView(Status_mic.FILE_FINISH);
                 } catch (Exception e) {
                 }
             } else {
-                //长按使用多选的情况
+
                 ClipData clipData = data.getClipData();
                 if (clipData != null) {
                     List<String> pathList = new ArrayList<>();
                     for (int i = 0; i < clipData.getItemCount(); i++) {
                         ClipData.Item item = clipData.getItemAt(i);
                         Uri uri = item.getUri();
-                        //TODO 对获得的uri做解析，这部分在另一篇文章讲解
-                        //String path = getPath(getApplicationContext(),uri);
-                        //routers.add(path);
+
                         pathList.add(uri.toString());
                     }
-                    //TODO 对转换得到的真实路径path做相关处理
-                    //System.out.println(pathList);
                 }
             }
         }

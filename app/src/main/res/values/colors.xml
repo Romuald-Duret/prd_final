@@ -6,4 +6,5 @@
     <color name="colorPrimaryDarkerer">#034E65</color>
     <color name="colorAccent">#066381</color>
     <color name="transparent">#00000000</color>
+    <color name="gray">#DCDCDC</color>
 </resources>
