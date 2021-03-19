@@ -2,6 +2,7 @@ package fr.polytech.larynxapp.model.analysis;
 
 import android.content.Context;
 import android.renderscript.ScriptIntrinsicYuvToRGB;
+import android.util.Log;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,12 +26,13 @@ public class FeaturesCalculator {
 	/**
 	 * The list of the position of the maximum of the periods.
 	 */
-	private List<Integer> pitchPositions;
+	private static List<Integer> pitchPositions;
 
 	/**
 	 * The list of the periods' length.
 	 */
-	private List<Integer> periods;
+	private List<Integer> periods ;
+
 
 	/**
 	 * The data to analyse.
@@ -40,7 +42,7 @@ public class FeaturesCalculator {
 	/**
 	 * The fundamental frequency of the data.
 	 */
-	private float fundamentalFreq;
+	private float fundamentalFreq = 0f;
 
 	/**
 	 * The list of pitches (voice frequencies)
@@ -48,6 +50,10 @@ public class FeaturesCalculator {
 	private List<Float> pitches;
 
 	private Context context;
+
+	final private int BASE_FRAGMENT = 200;
+	final private int OFFSET = 100;
+	private List<Float> T = new ArrayList<>();
 
 	/**
 	 * FeaturesCalculator sole builder.
@@ -65,13 +71,31 @@ public class FeaturesCalculator {
 		searchPitchPositions();
 	}
 
+	public FeaturesCalculator(AudioData audioData){
+		this.data = audioData.getData_processed();
+		pitches = new ArrayList<Float>();
+		periods = new ArrayList<>();
+		pitchPositions = new ArrayList<>();
+//		fundamentalFreq = 0f;
+//		initPeriodsSearch();
+//		searchPitchPositions();
+	}
+
+	public void setPitches(List<Float> pitches) {
+		this.pitches = pitches;
+	}
+
+	public void setContext(Context context) {
+		this.context = context;
+	}
+
 	/**
 	 * The method initializing the research of the periods.
 	 *
 	 * Finds the beginning and the ending of the area where the first period is to be searched.
 	 * Filters the data into the dataFiltered list.
 	 */
-	private void initPeriodsSearch() {
+	public void initPeriodsSearch() {
 
 		//init fundamentalFreq
 		calculatefundamentalFreq();
@@ -87,7 +111,7 @@ public class FeaturesCalculator {
 	 *
 	 * Fills the pitchPositions and the periods lists.
 	 */
-	private void searchPitchPositions() {
+	public void searchPitchPositions() {
 
 		for(float pitch : pitches)
 			periods.add((int) hzToPeriod(pitch));
@@ -228,6 +252,67 @@ public class FeaturesCalculator {
 			fundamentalFreq =  f0 / count;
 		else
 			fundamentalFreq = 0;
+	}
+
+	private Float PeriodToPitch(float period){
+		int sampling = 14700;
+		return  sampling / period;
+	}
+
+	/**
+	 * The method calculating the pitch periods
+	 */
+	public List<Float> calculatePitches(){
+		List<Integer> res = new ArrayList<Integer>();
+		int size = data.size();
+		int maxAmp = 0;
+		int startPos = 0;
+		// get the first pitch in the basic period
+		for (int i = 0; i < BASE_FRAGMENT; i ++){
+			if (maxAmp < data.get(i)){
+				maxAmp = data.get(i);
+				// set this position as the start position
+				startPos = i;
+			}
+		}
+		Log.v("startPos", String.valueOf(startPos));
+		// find every pitch in all the fragments
+		int pos = startPos + OFFSET; // set current position
+		int posAmpMax;
+		while(startPos < 1000){
+			if(data.get(pos) > 0) { // only read the positive data
+
+				posAmpMax = 0;
+				maxAmp = 0;
+				// access to all the data in this fragment
+				while (pos < startPos + BASE_FRAGMENT) {
+					// find the pitch and mark this position
+					if (maxAmp < data.get(pos)) {
+						maxAmp = data.get(pos);
+						posAmpMax = pos;
+					}
+					pos++;
+				}
+				// add pitch position into the list
+				pitchPositions.add(posAmpMax);
+				res.add(posAmpMax);
+//				System.out.println(posAmpMax);
+				// update the start position and the current position
+				startPos = posAmpMax;
+				pos =  startPos + OFFSET;
+			}else{
+				pos ++;
+			}
+		}
+
+		// calculate all periods and add them into list
+		for(int i = 0; i < pitchPositions.size() - 1; i++){
+			float period = (float)(pitchPositions.get(i+1) - pitchPositions.get(i));
+			T.add(period);
+			pitches.add(PeriodToPitch(period));
+		}
+		pitchPositions.clear();
+		return pitches;
 	}
 
 }

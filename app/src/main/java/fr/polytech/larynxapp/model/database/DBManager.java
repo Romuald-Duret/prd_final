@@ -126,6 +126,7 @@ public class DBManager {
 			records.add( record );
 		}
 		c.close();
+
 		return records;
 	}
 

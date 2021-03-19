@@ -186,6 +186,8 @@ public class HomeFragment extends Fragment {
      */
     private NotificationManager mNotificationManager;
 
+    private List<Record> records;
+
 
     public void setShimmer(double shimmer) {
         this.shimmer = shimmer;
@@ -309,57 +311,96 @@ public class HomeFragment extends Fragment {
                 break;
 
             case FILE_FINISH:
-//                analysePitchFromFile();
+                save();
+//                DateFormat dateFormat  = new SimpleDateFormat( "dd-MM-yyyy HH-mm-ss" );
+//                Date currentDate = new Date( System.currentTimeMillis() );
+//                fileName = dateFormat.format( currentDate );
+                createRecordingNotification();
+                analysePitchFromFile();
+//                Record record = new Record(fileName, finalPath, jitter, shimmer,f0);
+//                manager.add(record);
+//                Record record = new Record( name, filePath);
+//                manager.add( record );
+                manager.updateRecordVoiceFeatures(fileName, jitter, shimmer, f0);
+
                 updateView(Status_mic.DEFAULT);
                 break;
         }
     }
 
-//    private void analysePitchFromFile(){
-//                System.out.println(finalPath);
-//                try {
-//                    System.out.println("finalPath");
-//                    System.out.println(finalPath);
-//                    InputStream inStream = new FileInputStream(finalPath);
-//                    byte[] b = new byte[inStream.available()];
-//                    inStream.read(b);
-//                    System.out.println("b");
-//                    System.out.println(Arrays.toString(b));
-////                    System.out.println(inStream.);
-//                    TarsosDSPAudioFormat tarsosDSPAudioFormat = new TarsosDSPAudioFormat(
-//                    44100,
-//                    16,
-//                    1,
-//                    true,
-//                    ByteOrder.LITTLE_ENDIAN.equals(ByteOrder.nativeOrder()));
-//                    dispatcher = new AudioDispatcher(new UniversalAudioInputStream(inStream, tarsosDSPAudioFormat), 2048, 1);
-//                    PitchDetectionHandler pitchDetectionHandler = new PitchDetectionHandler() {
-//                        @Override
-//                        public void handlePitch(PitchDetectionResult res, AudioEvent e){
-//
-//                            float pitchInHz = res.getPitch();
-//                            System.out.println("pitchInHz");
-//                            System.out.println(pitchInHz);
-//
-//                            if(pitchInHz != -1 && pitchInHz < 400)
-//                                pitches.add(pitchInHz);
-//
-//
-//                        }
-//                    };
-//                    AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
-//                    dispatcher.addAudioProcessor(pitchProcessor);
-//
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//                Thread thread = new Thread(dispatcher, "file Dispatcher");
-//                thread.start();
-//                System.out.println("pitches.size()");
-//                System.out.println(pitches.size());
-//    }
+
+    private void analysePitchFromFile(){
+        AudioData audioData = new AudioData();
+        boolean fileOK;
+//        if(file == null){
+        file = new File(finalPath);
+//        }
+
+        try {
+            if (!file.exists())
+                //noinspection ResultOfMethodCallIgnored we don't need the result because we try to create only if the file doesn't exist.
+                file.createNewFile();
+            fileOK = true;
+        }
+        catch (IOException e) {
+            Log.e("AnalyseData", e.getMessage(), e);
+            fileOK = false;
+        }
+
+        if (!fileOK) {
+            return;
+        }
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(file);
+            byte[] b = new byte[inputStream.available()];
+            inputStream.read(b);
+            short[] s = new short[(b.length - 44) / 2];
+            ByteBuffer.wrap(b)
+                    .order(ByteOrder.LITTLE_ENDIAN)
+                    .asShortBuffer()
+                    .get(s);
+
+            for (short ss : s) {
+                audioData.addData(ss);
+            }
+
+            audioData.setMaxAmplitudeAbs();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        finally
+        {
+            if(inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        audioData.processData();
+
+        FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData);
+//        featuresCalculator.calculatePeriods();
+        setPitches(featuresCalculator.calculatePitches());
+
+        featuresCalculator.setContext(getContext());
+        featuresCalculator.initPeriodsSearch();
+        featuresCalculator.searchPitchPositions();
+        this.shimmer = featuresCalculator.getShimmer();
+        this.jitter = featuresCalculator.getJitter();
+        f0 = featuresCalculator.getfundamentalFreq();
+        System.out.println(pitches);
+        System.out.println(shimmer);
+        System.out.println(jitter);
+        System.out.println("f0");
+        System.out.println(f0);
+
+    }
 
 
 
@@ -681,9 +722,18 @@ public class HomeFragment extends Fragment {
 
         this.shimmer = featuresCalculator.getShimmer();
         this.jitter = featuresCalculator.getJitter();
+        System.out.println("shimmer");
+        System.out.println(shimmer);
+        System.out.println("jitter");
+        System.out.println(jitter);
+
 
 
         f0 = featuresCalculator.getfundamentalFreq();
+
+        System.out.println("f0");
+        System.out.println(f0);
+
     }
 
     /**
@@ -764,6 +814,10 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public void setPitches(List<Float> pitches) {
+        this.pitches = pitches;
+    }
+
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (data.getData() != null) {
@@ -776,6 +830,7 @@ public class HomeFragment extends Fragment {
                     inputStream.close();
 
                     finalPath = file.getAbsolutePath();
+//                    analysePitchFromFile();
                     updateView(Status_mic.FILE_FINISH);
                 } catch (Exception e) {
                 }
