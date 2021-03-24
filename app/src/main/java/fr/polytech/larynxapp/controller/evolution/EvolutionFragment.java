@@ -24,7 +24,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
@@ -64,40 +63,49 @@ public class EvolutionFragment extends Fragment {
     private int endDateMonth;
     private int endDateYear;
 
-
+    /**
+     * to store the data
+     */
     private String[] dateValues;
 
+    /**
+     * the reset Button
+     */
     private ImageButton resetButton;
 
     /**
-     * The datePicker
+     * @param inflater Used to load the xml layout file as View
+     * @param container A container component
+     * @param savedInstanceState Used to save activity
+     * @return Return a evolution'sview object
      */
-    private DatePicker datePicker;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        //Sets the view the the fragment
+        View root = inflater.inflate(R.layout.fragment_shimmer, container, false);
 
-        View root = inflater.inflate(R.layout.fragment_shimmer, container, false);    //Sets the view the the fragment
-
-
+        //Read data from the database
         records = new DBManager(getContext()).query();
 
+        //Initialization module
         startDateButton = root.findViewById(R.id.startDate);
         resetButton = root.findViewById(R.id.resetDate);
         dateValues = dateValues();
         initDateButton();
+
         //******************************Creation of the shimmer's chart*****************************/
         final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
         shimmerTextView.setText("Shimmer");
         shimmerTextView.setTextSize(20f);
-
-
         shimmerMpLineChart = root.findViewById(R.id.shimmer_line_chart);
         setShimmerChart(shimmerMpLineChart);
         setShimmerChartData();
         return root;
     }
 
+    /**
+     * Set the data into the chart.
+     */
     public void setShimmerChartData(){
         LineDataSet shimmerLineSet = new LineDataSet(shimmerDataValues(), "Shimmer");
         shimmerLineSet.setColor(Color.BLACK);
@@ -199,38 +207,8 @@ public class EvolutionFragment extends Fragment {
     }
 
     /**
-     * Set the graphic feature of the line charts for the jitter
-     * @param chart the chart to be set
+     * Button initialization
      */
-    private void setJitterChart(LineChart chart){
-
-        YAxis yAxis = chart.getAxisLeft();                  //The line chart's y axis
-        XAxis xAxis = chart.getXAxis();                     //The line chart's x axis
-
-        chart.getAxisRight().setEnabled(false);             //Disable the right axis
-
-        //Set the y axis property
-        yAxis.setAxisLineWidth(2f);
-        yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(3f);
-        yAxis.setTextSize(12f);
-        PercentFormatter percentFormatter = new PercentFormatter();
-        yAxis.setValueFormatter(percentFormatter);
-
-        //Set the x axis property
-        xAxis.setAxisLineWidth(2f);
-        xAxis.setAxisLineColor(Color.BLACK);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(12f);
-
-        chart.getLegend().setEnabled(false);
-        chart.getDescription().setEnabled(false);
-
-        chart.setScaleEnabled(true);
-        chart.setTouchEnabled(false);
-    }
-
     public void initDateButton() {
         startDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,23 +234,14 @@ public class EvolutionFragment extends Fragment {
                                     dateMonth = "0" + dateMonth;
                                 }
 
+                                //Process the file name
                                 String test = dateDay +"-" + dateMonth + "-" + year;
-
                                 for(int i = 0; i < records.size(); i++){
-                                    System.out.println("tmp");
                                     String tmp = records.get(i).getName().split(" ")[0];
-                                    System.out.println(tmp);
-                                    System.out.println("test");
-                                    System.out.println(test);
                                     if(!test.equals(tmp)){
                                         records.remove(i);
                                         i--;
                                     }
-                                }
-                                System.out.println("～～～～～～～～～～");
-                                for(int i = 0; i < records.size(); i++){
-                                    System.out.println("records.get(i).getName()");
-                                    System.out.println(records.get(i).getName());
                                 }
                             }
                         }, year, month, dayOfMonth);
@@ -280,74 +249,39 @@ public class EvolutionFragment extends Fragment {
             }
         });
 
+        //Add an event to the button
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setShimmerChartData();
-//                view.invalidate();
-                for(int i = 0; i < records.size(); i ++){
-                    System.out.println(records.get(i).getName());
-                }
-                System.out.println("view has been invalidate");
             }
         });
 
     }
 
-    public int getStartDateYear() {
-        return startDateYear;
-    }
-
+    /**
+     * Set year
+     * @param startDateYear The year you want to set.
+     */
     public void setStartDateYear(int startDateYear) {
         this.startDateYear = startDateYear;
     }
 
-    public int getStartDateMonth() {
-        return startDateMonth;
-    }
-
+    /**
+     * Set month
+     * @param startDateMonth The month you want to set.
+     */
     public void setStartDateMonth(int startDateMonth) {
         this.startDateMonth = startDateMonth;
     }
 
-    public int getStartDateDay() {
-        return startDateDay;
-    }
-
+    /**
+     * Set day
+     * @param startDateDay The day you want to set
+     */
     public void setStartDateDay(int startDateDay) {
         this.startDateDay = startDateDay;
     }
 
-    public int getEndDateDay() {
-        return endDateDay;
-    }
-
-    public void setEndDateDay(int endDateDay) {
-        this.endDateDay = endDateDay;
-    }
-
-    public int getEndDateMonth() {
-        return endDateMonth;
-    }
-
-    public void setEndDateMonth(int endDateMonth) {
-        this.endDateMonth = endDateMonth;
-    }
-
-    public int getEndDateYear() {
-        return endDateYear;
-    }
-
-    public void setEndDateYear(int endDateYear) {
-        this.endDateYear = endDateYear;
-    }
-
-    public String[] getDateValues() {
-        return dateValues;
-    }
-
-    public void setDateValues(String[] dateValues) {
-        this.dateValues = dateValues;
-    }
 }
 

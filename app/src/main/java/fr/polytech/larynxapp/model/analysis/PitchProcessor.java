@@ -21,14 +21,10 @@ public class PitchProcessor implements AudioProcessor {
     /**
      * Initialize a new pitch processor.
      *
-     * @param algorithm
-     *            An enum defining the algorithm.
-     * @param sampleRate
-     *            The sample rate of the buffer (Hz).
-     * @param bufferSize
-     *            The size of the buffer in samples.
-     * @param handler
-     *            The handler handles detected pitch.
+     * @param algorithm  An enum defining the algorithm.
+     * @param sampleRate The sample rate of the buffer (Hz).
+     * @param bufferSize The size of the buffer in samples.
+     * @param handler    The handler handles detected pitch.
      */
     public PitchProcessor(PitchDetector algorithm, float sampleRate,
                           int bufferSize,

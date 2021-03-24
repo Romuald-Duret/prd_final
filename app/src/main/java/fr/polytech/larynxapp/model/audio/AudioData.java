@@ -52,9 +52,9 @@ public class AudioData {
 	 */
 	private final static double RATIO_ENDING = 0.9;   //we remove the last  10%
 	
-	
-	
-	
+
+
+
 	
 	/**
 	 * AudioData sole and default builder.
@@ -155,14 +155,6 @@ public class AudioData {
 
 			int indexToCutFrom = (int) ( data.size() * RATIO_BEGINNING );
 			int indexToCutTo   = (int) ( data.size() * RATIO_ENDING );
-//			System.out.println("indexToCutFrom:");
-//			System.out.println(indexToCutFrom);
-//
-//			System.out.println("indexToCutTo");
-//			System.out.println(indexToCutTo);
-//
-//			System.out.println("data.size");
-//			System.out.println(data.size());
 			
 			// cut the head and tail of original audio data, only leave a small part of it
 			for ( int i = indexToCutFrom; i < indexToCutTo; i++ ) {
@@ -176,10 +168,6 @@ public class AudioData {
 				if (maxAmplitude < newData)
 					maxAmplitude = newData;
 			}
-//			System.out.println("DATA_PROCESSECD");
-//			System.out.println(data_processed);
-//			System.out.println("dataproSize");
-//			System.out.println(data_processed.size());
 		}
 		catch ( Exception e ) {
 			Log.e( "---processData---", Log.getStackTraceString( e ), e );

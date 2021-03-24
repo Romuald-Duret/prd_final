@@ -66,7 +66,7 @@ public class MainActivityTest {
         bottomNavigationItemView2.perform(click());
 
         ViewInteraction bottomNavigationItemView3 = onView(
-                allOf(withId(R.id.navigation_evolution), withContentDescription("Suivi"),
+                allOf(withId(R.id.navigation_Shimmer), withContentDescription("Shimmer"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_view),
@@ -76,17 +76,17 @@ public class MainActivityTest {
         bottomNavigationItemView3.perform(click());
 
         ViewInteraction bottomNavigationItemView4 = onView(
-                allOf(withId(R.id.navigation_home), withContentDescription("Accueil"),
+                allOf(withId(R.id.navigation_Jitter), withContentDescription("Jitter"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_view),
                                         0),
-                                0),
+                                3),
                         isDisplayed()));
         bottomNavigationItemView4.perform(click());
 
         ViewInteraction appCompatImageView = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+                allOf(withId(R.id.mic_button),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_host_fragment),
@@ -95,64 +95,64 @@ public class MainActivityTest {
                         isDisplayed()));
         appCompatImageView.perform(click());
 
-        ViewInteraction appCompatImageView2 = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatImageView2.perform(click());
+//        ViewInteraction appCompatImageView2 = onView(
+//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(R.id.nav_host_fragment),
+//                                        0),
+//                                1),
+//                        isDisplayed()));
+//        appCompatImageView2.perform(click());
 
-        ViewInteraction appCompatImageView3 = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatImageView3.perform(click());
+//        ViewInteraction appCompatImageView3 = onView(
+//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(R.id.nav_host_fragment),
+//                                        0),
+//                                1),
+//                        isDisplayed()));
+//        appCompatImageView3.perform(click());
 
-        ViewInteraction appCompatImageView4 = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatImageView4.perform(click());
+//        ViewInteraction appCompatImageView4 = onView(
+//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(R.id.nav_host_fragment),
+//                                        0),
+//                                1),
+//                        isDisplayed()));
+//        appCompatImageView4.perform(click());
+//
+//        ViewInteraction appCompatImageView5 = onView(
+//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(R.id.nav_host_fragment),
+//                                        0),
+//                                1),
+//                        isDisplayed()));
+//        appCompatImageView5.perform(click());
 
-        ViewInteraction appCompatImageView5 = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatImageView5.perform(click());
+//        ViewInteraction appCompatImageView6 = onView(
+//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
+//                        childAtPosition(
+//                                childAtPosition(
+//                                        withId(R.id.nav_host_fragment),
+//                                        0),
+//                                1),
+//                        isDisplayed()));
+//        appCompatImageView6.perform(click());
 
-        ViewInteraction appCompatImageView6 = onView(
-                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.nav_host_fragment),
-                                        0),
-                                1),
-                        isDisplayed()));
-        appCompatImageView6.perform(click());
-
-        try {
-            onView(withId(R.id.reset_button)).check(matches(isDisplayed()));
-            // Reset button is displayed
-            onView(withId(R.id.reset_button)).perform(click());
-        }
-        catch (AssertionFailedError e) {
-            // View not displayed
-        }
+//        try {
+//            onView(withId(R.id.reset_button)).check(matches(isDisplayed()));
+//            // Reset button is displayed
+//            onView(withId(R.id.reset_button)).perform(click());
+//        }
+//        catch (AssertionFailedError e) {
+//            // View not displayed
+//        }
 //        ViewInteraction appCompatButton = onView(
 //                allOf(withId(R.id.reset_button),
 //                        childAtPosition(
@@ -164,7 +164,7 @@ public class MainActivityTest {
 //        appCompatButton.perform(click());
 
         ViewInteraction frameLayout = onView(
-                allOf(withId(R.id.navigation_evolution), withContentDescription("Suivi"),
+                allOf(withId(R.id.navigation_Shimmer), withContentDescription("Shimmer"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_view),
@@ -185,6 +185,16 @@ public class MainActivityTest {
 
         ViewInteraction frameLayout3 = onView(
                 allOf(withId(R.id.navigation_home), withContentDescription("Accueil"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_view),
+                                        0),
+                                0),
+                        isDisplayed()));
+        frameLayout3.check(matches(isDisplayed()));
+
+        ViewInteraction frameLayout4 = onView(
+                allOf(withId(R.id.navigation_Jitter), withContentDescription("Jitter"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.nav_view),

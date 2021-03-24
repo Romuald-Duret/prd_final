@@ -108,8 +108,6 @@ public final class Yin implements PitchDetector {
         }
 
         result.setPitch(pitchInHertz);
-//        System.out.println("~~~~~~~~~~~~~~~~~");
-//        System.out.println(result.getPitch());
 
         return result;
     }

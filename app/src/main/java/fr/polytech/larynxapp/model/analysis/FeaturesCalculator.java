@@ -49,8 +49,14 @@ public class FeaturesCalculator {
 	 */
 	private List<Float> pitches;
 
+	/**
+	 * the context of the application
+	 */
 	private Context context;
 
+	/**
+	 * Two constants used to calculate pitch
+	 */
 	final private int BASE_FRAGMENT = 200;
 	final private int OFFSET = 100;
 	private List<Float> T = new ArrayList<>();
@@ -60,10 +66,9 @@ public class FeaturesCalculator {
 	 *
 	 * @param audioData the audio data containing the data to analyse.
 	 */
-	public FeaturesCalculator(AudioData audioData, List<Float> pitches, Context context) {
+	public FeaturesCalculator(AudioData audioData, List<Float> pitches) {
 		this.data = audioData.getData_processed();
 		this.pitches = pitches;
-		this.context = context;
 		periods = new ArrayList<>();
 		pitchPositions = new ArrayList<>();
 		fundamentalFreq = 0f;
@@ -71,20 +76,21 @@ public class FeaturesCalculator {
 		searchPitchPositions();
 	}
 
+	/**
+	 * FeaturesCalculator's constructor
+	 * @param audioData the data that wants to be processed
+	 */
 	public FeaturesCalculator(AudioData audioData){
 		this.data = audioData.getData_processed();
 		pitches = new ArrayList<Float>();
 		periods = new ArrayList<>();
 		pitchPositions = new ArrayList<>();
-//		fundamentalFreq = 0f;
-//		initPeriodsSearch();
-//		searchPitchPositions();
 	}
 
-	public void setPitches(List<Float> pitches) {
-		this.pitches = pitches;
-	}
-
+	/**
+	 * context's setter
+	 * @param context the application's context
+	 */
 	public void setContext(Context context) {
 		this.context = context;
 	}
@@ -102,7 +108,6 @@ public class FeaturesCalculator {
 
 		//set the first search area
 		final double confidenceLevel = 5 / 100.;
-
 		nextPeriodSearchingAreaEnd = (int) Math.floor( hzToPeriod( fundamentalFreq ) * ( 1 + confidenceLevel ) );
 	}
 
@@ -134,7 +139,6 @@ public class FeaturesCalculator {
 				}
 
 			}
-
 			periodBeginning += periods.get( period );
 			pitchPositions.add( periodMaxPitchIndex );
 		}
@@ -155,18 +159,15 @@ public class FeaturesCalculator {
 	// FEATURE NUMBER 1 : SHIMMER
 
 	/**
-	 * The method calculating the Shimmer (corresponds to dda in Praat)
+	 * The method calculating the Shimmer
 	 *
 	 * @return the Shimmer
 	 */
 	public double getShimmer() {
-		int           minAmp     = 0;
-		int           maxAmp;
-		double          amplitudeDiffSum = 0; // sum of difference between every two peak-to-peak amplitudes
-		double          amplitudeSum      = 0; // sum of all the peak-to-peak amplitudes
+		int           minAmp     = 0; // figures the minium of the amplitude.
+		int           maxAmp; // figures the maxium of the amplitude.
 		double  amplitude = 0;
 		List<Double> amplitudes = new ArrayList<Double>();
-		List<Integer> ampPk2Pk   = new ArrayList<>(); // this list contains all the peak-to-peak amplitudes
 		double sum = 0;
 		for ( int i = 0; i < pitchPositions.size() - 1; i++ ) {
 			// get each pitch
@@ -296,7 +297,6 @@ public class FeaturesCalculator {
 				// add pitch position into the list
 				pitchPositions.add(posAmpMax);
 				res.add(posAmpMax);
-//				System.out.println(posAmpMax);
 				// update the start position and the current position
 				startPos = posAmpMax;
 				pos =  startPos + OFFSET;

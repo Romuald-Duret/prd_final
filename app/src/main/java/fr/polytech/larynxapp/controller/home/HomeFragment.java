@@ -3,18 +3,11 @@ package fr.polytech.larynxapp.controller.home;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -26,9 +19,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import java.io.File;
@@ -182,36 +173,50 @@ public class HomeFragment extends Fragment {
     private TarsosDSPAudioFormat AUDIO_FORMAT;
 
     /**
-     * Manages the notifications
+     * the shimmer's setter
+     * @param shimmer shimmer
      */
-    private NotificationManager mNotificationManager;
-
-    private List<Record> records;
-
-
     public void setShimmer(double shimmer) {
         this.shimmer = shimmer;
     }
 
+    /**
+     * the jitter's setter
+     * @param jitter jitter
+     */
     public void setJitter(double jitter) {
         this.jitter = jitter;
     }
 
+    /**
+     * the shimmer's getter
+     * @return shimmer's value
+     */
     public double getShimmer() {
         return shimmer;
     }
 
+    /**
+     * the jitter's getter
+     * @return jitter's value
+     */
     public double getJitter() {
         return jitter;
     }
 
+    /**
+     * create the home's view
+     * @param inflater inflater Used to load the xml layout file as View
+     * @param container A container component
+     * @param savedInstanceState Used to save activity
+     * @return Return a home's view object
+     */
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initPermissions();
-
+        // create the components
         manager = new DBManager( this.getContext() );
         button_restart = root.findViewById(R.id.reset_button);
         button_mic = root.findViewById(R.id.mic_button);
@@ -229,7 +234,6 @@ public class HomeFragment extends Fragment {
                 ByteOrder.LITTLE_ENDIAN.equals(ByteOrder.nativeOrder()));
 
         updateView();
-
         return root;
     }
 
@@ -246,14 +250,12 @@ public class HomeFragment extends Fragment {
                         updateView(Status_mic.RECORDING);
                     }
                 });
-
                 button_file.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                         intent.setType("*/*");
                         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//                        intent.addCategory(Intent.CATEGORY_OPENABLE);
                         startActivityForResult(intent, 1);
                     }
 
@@ -294,7 +296,6 @@ public class HomeFragment extends Fragment {
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         save();
-                        createRecordingNotification();
                         analyseData();
                         manager.updateRecordVoiceFeatures(fileName, jitter*100, shimmer, f0);
 
@@ -312,15 +313,7 @@ public class HomeFragment extends Fragment {
 
             case FILE_FINISH:
                 save();
-//                DateFormat dateFormat  = new SimpleDateFormat( "dd-MM-yyyy HH-mm-ss" );
-//                Date currentDate = new Date( System.currentTimeMillis() );
-//                fileName = dateFormat.format( currentDate );
-                createRecordingNotification();
                 analysePitchFromFile();
-//                Record record = new Record(fileName, finalPath, jitter, shimmer,f0);
-//                manager.add(record);
-//                Record record = new Record( name, filePath);
-//                manager.add( record );
                 manager.updateRecordVoiceFeatures(fileName, jitter, shimmer, f0);
 
                 updateView(Status_mic.DEFAULT);
@@ -328,17 +321,17 @@ public class HomeFragment extends Fragment {
         }
     }
 
-
+    /**
+     * get the pitch's information from the stream of wave file
+     */
     private void analysePitchFromFile(){
         AudioData audioData = new AudioData();
         boolean fileOK;
-//        if(file == null){
         file = new File(finalPath);
-//        }
 
         try {
             if (!file.exists())
-                //noinspection ResultOfMethodCallIgnored we don't need the result because we try to create only if the file doesn't exist.
+                //Ignored we don't need the result because we try to create only if the file doesn't exist.
                 file.createNewFile();
             fileOK = true;
         }
@@ -385,7 +378,6 @@ public class HomeFragment extends Fragment {
         audioData.processData();
 
         FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData);
-//        featuresCalculator.calculatePeriods();
         setPitches(featuresCalculator.calculatePitches());
 
         featuresCalculator.setContext(getContext());
@@ -394,15 +386,8 @@ public class HomeFragment extends Fragment {
         this.shimmer = featuresCalculator.getShimmer();
         this.jitter = featuresCalculator.getJitter();
         f0 = featuresCalculator.getfundamentalFreq();
-        System.out.println(pitches);
-        System.out.println(shimmer);
-        System.out.println(jitter);
-        System.out.println("f0");
-        System.out.println(f0);
 
     }
-
-
 
     /**
      * Starts the recording
@@ -440,7 +425,6 @@ public class HomeFragment extends Fragment {
 
             AudioProcessor pitchProcessor = new PitchProcessor(new Yin(44100, 2048), 44100, 2048, pitchDetectionHandler);
             dispatcher.addAudioProcessor(pitchProcessor);
-
 
             new Thread(new Runnable() {
                 @Override
@@ -538,8 +522,6 @@ public class HomeFragment extends Fragment {
     public void onDestroy()
     {
         super.onDestroy();
-        if(mNotificationManager != null)
-            mNotificationManager.cancelAll();
         releaseDispatcher();
         manager.closeDB();
     }
@@ -594,14 +576,6 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    /**
-     * FinalPath getter.
-     *
-     * @return the finalPath value
-     */
-    public String getFinalPath() {
-        return this.finalPath;
-    }
 
     /**
      * FinalPath setter.
@@ -628,8 +602,8 @@ public class HomeFragment extends Fragment {
     /**
      * Adds a Record in the dataBase
      *
-     * @param name
-     * @param filePath
+     * @param name the record's name
+     * @param filePath the file's path
      */
     public void addRecordDB(String name, String filePath) {
         Record record = new Record( name, filePath);
@@ -657,13 +631,11 @@ public class HomeFragment extends Fragment {
     public void analyseData() {
         AudioData audioData = new AudioData();
         boolean fileOK;
-//        if(file == null){
-            file = new File(finalPath);
-//        }
+        file = new File(finalPath);
 
         try {
             if (!file.exists())
-                //noinspection ResultOfMethodCallIgnored we don't need the result because we try to create only if the file doesn't exist.
+                //Ignored we don't need the result because we try to create only if the file doesn't exist.
                 file.createNewFile();
                 fileOK = true;
         }
@@ -678,11 +650,7 @@ public class HomeFragment extends Fragment {
         FileInputStream inputStream = null;
         try {
             inputStream = new FileInputStream(file);
-            System.out.println("file.getAbsolutePath()");
-            System.out.println(file.getAbsolutePath());
             int test = inputStream.read();
-            System.out.println("test");
-            System.out.println(test);
             byte[] b = new byte[inputStream.available()];
             inputStream.read(b);
             System.out.println("b");
@@ -695,7 +663,6 @@ public class HomeFragment extends Fragment {
 
             for (short ss : s) {
                 audioData.addData(ss);
-                //System.out.println(ss);
             }
 
             audioData.setMaxAmplitudeAbs();
@@ -714,85 +681,20 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-
-
         audioData.processData();
-
-        FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData, pitches,getContext());
-
+        FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData, pitches);
         this.shimmer = featuresCalculator.getShimmer();
         this.jitter = featuresCalculator.getJitter();
-        System.out.println("shimmer");
-        System.out.println(shimmer);
-        System.out.println("jitter");
-        System.out.println(jitter);
-
-
-
         f0 = featuresCalculator.getfundamentalFreq();
 
-        System.out.println("f0");
-        System.out.println(f0);
 
     }
 
     /**
-     * Creates a notification about the recording's path
+     * create the wav file
+     * @return a wav file object
+     * @throws IOException
      */
-    public void createRecordingNotification()
-    {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = getString(R.string.app_name);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("LarynxChannel", name, importance);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getContext().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-
-        String pathForNotification = finalPath.substring(finalPath.indexOf("voiceRecords/"));
-        Intent intent = new Intent();
-        File recordFile = new File(finalPath);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setDataAndType(FileProvider.getUriForFile(this.getActivity(), this.getActivity().getPackageName() + ".provider", recordFile), "audio/*");
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        PendingIntent contentIntent = PendingIntent.getActivity(this.getActivity(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        Notification notification = new NotificationCompat.Builder(this.getActivity(), "LarynxChannel")
-                .setSmallIcon(R.drawable.bouton_micro)
-                .setContentTitle("Fichier enregistré sur : ")
-                .setContentText(pathForNotification)
-                .setContentIntent(contentIntent)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setOngoing(false)
-                .build();
-
-        notification.flags |= Notification.FLAG_AUTO_CANCEL;
-
-        mNotificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
-
-        mNotificationManager.notify(0, notification);
-    }
-
-    private String getPath(Context context, Uri uri) {
-        String path = null;
-        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
-        if (cursor == null) {
-            return null;
-        }
-        if (cursor.moveToFirst()) {
-            try {
-                path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        cursor.close();
-        return path;
-    }
-
     private File createWavFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String wavFileName = "NEWLOAD_" + timeStamp + "_";
@@ -802,10 +704,15 @@ public class HomeFragment extends Fragment {
                 ".wav",         /* suffix */
                 storageDir      /* directory */
         );
-
         return wav;
     }
 
+    /**
+     * copy the stream to a output stream.
+     * @param input input stream
+     * @param output output stream
+     * @throws IOException
+     */
     public static void copyStream(InputStream input, OutputStream output) throws IOException {
         byte[] buffer = new byte[1024];
         int bytesRead;
@@ -814,10 +721,20 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    /**
+     * pitches setter.
+     * @param pitches
+     */
     public void setPitches(List<Float> pitches) {
         this.pitches = pitches;
     }
 
+    /**
+     * Callback function for reading wav files.
+     * @param requestCode Request status code
+     * @param resultCode Result status code
+     * @param data data
+     */
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             if (data.getData() != null) {
@@ -830,7 +747,6 @@ public class HomeFragment extends Fragment {
                     inputStream.close();
 
                     finalPath = file.getAbsolutePath();
-//                    analysePitchFromFile();
                     updateView(Status_mic.FILE_FINISH);
                 } catch (Exception e) {
                 }

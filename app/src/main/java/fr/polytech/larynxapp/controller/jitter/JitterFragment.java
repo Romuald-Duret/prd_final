@@ -70,7 +70,12 @@ public class JitterFragment extends Fragment {
      */
     private DatePicker datePicker;
 
-
+    /**
+     * @param inflater Used to load the xml layout file as View
+     * @param container A container component
+     * @param savedInstanceState Used to save activity
+     * @return Return a Jitter's view object
+     */
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -93,6 +98,9 @@ public class JitterFragment extends Fragment {
         return root;
     }
 
+    /**
+     * set the jitter's data to the chart
+     */
     public void setJitterChartData(){
         LineDataSet jitterLineSet = new LineDataSet(jitterDataValues(), "Jitter");
         jitterLineSet.setColor(Color.BLACK);
@@ -122,18 +130,6 @@ public class JitterFragment extends Fragment {
     }
 
     /**
-     * Initialisation of the shimmer data's arraylist
-     * @return the shimmer data's arraylist
-     */
-    private ArrayList<Entry> shimmerDataValues(){
-        ArrayList<Entry> dataVals = new ArrayList<>();
-        for(int i = 0; i < records.size(); i++) {
-            dataVals.add(new Entry(i, (float) records.get(i).getShimmer()));
-        }
-        return dataVals;
-    }
-
-    /**
      * Initialisation of the jitter data's arraylist
      * @return the jitter data's arraylist
      */
@@ -160,37 +156,6 @@ public class JitterFragment extends Fragment {
         return dates.toArray(new String[0]);
     }
 
-    /**
-     * Set the graphic feature of the line charts for the shimmer
-     * @param chart the chart to be set
-     */
-    private void setShimmerChart(LineChart chart){
-
-        YAxis yAxis = chart.getAxisLeft();                  //The line chart's y axis
-        XAxis xAxis = chart.getXAxis();                     //The line chart's x axis
-
-        chart.getAxisRight().setEnabled(false);             //Disable the right axis
-
-        //Set the y axis property
-        yAxis.setAxisLineWidth(2f);
-        yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(10f);
-        yAxis.setTextSize(12f);
-
-        PercentFormatter percentFormatter = new PercentFormatter();
-        yAxis.setValueFormatter(percentFormatter);
-        //Set the x axis property
-        xAxis.setAxisLineWidth(2f);
-        xAxis.setAxisLineColor(Color.BLACK);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(12f);
-
-        chart.getLegend().setEnabled(false);
-        chart.getDescription().setEnabled(false);
-        chart.setScaleEnabled(true);
-        chart.setTouchEnabled(false);
-    }
 
     /**
      * Set the graphic feature of the line charts for the jitter
@@ -225,6 +190,9 @@ public class JitterFragment extends Fragment {
         chart.setTouchEnabled(false);
     }
 
+    /**
+     * init the select date buttons
+     */
     private void initDateButton() {
         startDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,11 +222,7 @@ public class JitterFragment extends Fragment {
                                 String test = dateDay +"-" + dateMonth + "-" + year;
 
                                 for(int i = 0; i < records.size(); i++){
-                                    System.out.println("tmp");
                                     String tmp = records.get(i).getName().split(" ")[0];
-                                    System.out.println(tmp);
-                                    System.out.println("test");
-                                    System.out.println(test);
                                     if(!test.equals(tmp)){
                                         records.remove(i);
                                         i--;
