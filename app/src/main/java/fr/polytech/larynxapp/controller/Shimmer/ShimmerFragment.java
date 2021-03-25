@@ -1,4 +1,4 @@
-package fr.polytech.larynxapp.controller.evolution;
+package fr.polytech.larynxapp.controller.Shimmer;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class EvolutionFragment extends Fragment {
+public class ShimmerFragment extends Fragment {
 
     /**
      * The line chart where the shimmer values will be shown

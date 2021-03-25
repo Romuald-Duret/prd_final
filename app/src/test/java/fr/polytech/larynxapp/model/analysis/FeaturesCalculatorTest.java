@@ -54,15 +54,15 @@ public class FeaturesCalculatorTest
         assertEquals(100d, featureCalculator.getfundamentalFreq(), 0.01);
     }
 
-    @Test
-    public void getShimmer()
-    {
-        assertEquals(0, featureCalculator.getShimmer(), 0.01);
-    }
+//    @Test
+//    public void getShimmer()
+//    {
+//        assertEquals(0, featureCalculator.getShimmer(), 0.01);
+//    }
 
-    @Test
-    public void getJitter()
-    {
-        assertEquals(0, featureCalculator.getJitter(), 0.01);
-    }
+//    @Test
+//    public void getJitter()
+//    {
+//        assertEquals(0, featureCalculator.getJitter(), 0.01);
+//    }
 }

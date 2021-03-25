@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_Shimmer"
-        android:name="fr.polytech.larynxapp.controller.evolution.EvolutionFragment"
+        android:name="fr.polytech.larynxapp.controller.Shimmer.ShimmerFragment"
         android:label="Shimmer"
         tools:layout="@layout/fragment_shimmer" />
 
