@@ -10,7 +10,6 @@ import androidx.test.rule.ActivityTestRule;
 import androidx.test.rule.GrantPermissionRule;
 import androidx.test.runner.AndroidJUnit4;
 
-import junit.framework.AssertionFailedError;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -18,7 +17,6 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -55,153 +53,46 @@ public class MainActivityTest {
                         isDisplayed()));
         bottomNavigationItemView.perform(click());
 
-//        ViewInteraction bottomNavigationItemView2 = onView(
-//                allOf(withId(R.id.navigation_home), withContentDescription("Accueil"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                0),
-//                        isDisplayed()));
-//        bottomNavigationItemView2.perform(click());
+        ViewInteraction bottomNavigationItemView2 = onView(
+                allOf(withId(R.id.navigation_home), withContentDescription("Accueil"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_view),
+                                        0),
+                                0),
+                        isDisplayed()));
+        bottomNavigationItemView2.perform(click());
 
-//        ViewInteraction bottomNavigationItemView3 = onView(
-//                allOf(withId(R.id.navigation_Shimmer), withContentDescription("Shimmer"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                2),
-//                        isDisplayed()));
-//        bottomNavigationItemView3.perform(click());
+        ViewInteraction bottomNavigationItemView3 = onView(
+                allOf(withId(R.id.navigation_Shimmer), withContentDescription("Shimmer"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_view),
+                                        0),
+                                2),
+                        isDisplayed()));
+        bottomNavigationItemView3.perform(click());
 
-//        ViewInteraction bottomNavigationItemView4 = onView(
-//                allOf(withId(R.id.navigation_Jitter), withContentDescription("Jitter"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                3),
-//                        isDisplayed()));
-//        bottomNavigationItemView4.perform(click());
+        ViewInteraction bottomNavigationItemView4 = onView(
+                allOf(withId(R.id.navigation_Jitter), withContentDescription("Jitter"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_view),
+                                        0),
+                                3),
+                        isDisplayed()));
+        bottomNavigationItemView4.perform(click());
 
-//        ViewInteraction appCompatImageView = onView(
-//                allOf(withId(R.id.mic_button),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView.perform(click());
+        ViewInteraction appCompatImageView = onView(
+                allOf(withId(R.id.mic_button),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.nav_host_fragment),
+                                        0),
+                                1),
+                        isDisplayed()));
+        appCompatImageView.perform(click());
 
-//        ViewInteraction appCompatImageView2 = onView(
-//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView2.perform(click());
-
-//        ViewInteraction appCompatImageView3 = onView(
-//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView3.perform(click());
-
-//        ViewInteraction appCompatImageView4 = onView(
-//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView4.perform(click());
-//
-//        ViewInteraction appCompatImageView5 = onView(
-//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView5.perform(click());
-
-//        ViewInteraction appCompatImageView6 = onView(
-//                allOf(withId(R.id.mic_button), withContentDescription("font of the mic"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                1),
-//                        isDisplayed()));
-//        appCompatImageView6.perform(click());
-
-//        try {
-//            onView(withId(R.id.reset_button)).check(matches(isDisplayed()));
-//            // Reset button is displayed
-//            onView(withId(R.id.reset_button)).perform(click());
-//        }
-//        catch (AssertionFailedError e) {
-//            // View not displayed
-//        }
-//        ViewInteraction appCompatButton = onView(
-//                allOf(withId(R.id.reset_button),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_host_fragment),
-//                                        0),
-//                                0),
-//                        isDisplayed()));
-//        appCompatButton.perform(click());
-
-//        ViewInteraction frameLayout = onView(
-//                allOf(withId(R.id.navigation_Shimmer), withContentDescription("Shimmer"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                2),
-//                        isDisplayed()));
-//        frameLayout.check(matches(isDisplayed()));
-
-//        ViewInteraction frameLayout2 = onView(
-//                allOf(withId(R.id.navigation_history), withContentDescription("Historique"),
-//                childAtPosition(
-//                        childAtPosition(
-//                                withId(R.id.nav_view),
-//                                0),
-//                        1),
-//                isDisplayed()));
-//        frameLayout2.check(matches(isDisplayed()));
-
-//        ViewInteraction frameLayout3 = onView(
-//                allOf(withId(R.id.navigation_home), withContentDescription("Accueil"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                0),
-//                        isDisplayed()));
-//        frameLayout3.check(matches(isDisplayed()));
-
-//        ViewInteraction frameLayout4 = onView(
-//                allOf(withId(R.id.navigation_Jitter), withContentDescription("Jitter"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(R.id.nav_view),
-//                                        0),
-//                                0),
-//                        isDisplayed()));
-//        frameLayout3.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

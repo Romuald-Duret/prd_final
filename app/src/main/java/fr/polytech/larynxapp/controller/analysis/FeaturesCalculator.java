@@ -1,17 +1,12 @@
-package fr.polytech.larynxapp.model.analysis;
+package fr.polytech.larynxapp.controller.analysis;
 
 import android.content.Context;
-import android.renderscript.ScriptIntrinsicYuvToRGB;
 import android.util.Log;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.polytech.larynxapp.MainActivity;
 import fr.polytech.larynxapp.model.audio.AudioData;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
+
 
 /**
  * The class calculating fundamentalFreq (fundamental frequency), Jitter and Shimmer of the voice
@@ -179,14 +174,14 @@ public class FeaturesCalculator {
 			}
 			amplitude = maxAmp - minAmp;
 			amplitudes.add(amplitude);
-			minAmp = 0;
+			minAmp = 9999;
 		}
-
+///Math.log(10)
 		for(int j = 0; j < amplitudes.size() - 1; j++){
-			double element = Math.abs(20*(Math.log(amplitudes.get(j+1)/amplitudes.get(j))/Math.log(10)));
+			double element = Math.abs(20*(Math.log(amplitudes.get(j+1)/amplitudes.get(j))));
 			sum = sum + element;
 		}
-		double result1 = sum/amplitudes.size();
+		double result1 = sum/(amplitudes.size() - 1);
 		return result1;
 
 	}
@@ -244,7 +239,6 @@ public class FeaturesCalculator {
 		float f0 = 0;
 		System.out.println("pitches");
 		System.out.println(pitches);
-		//System.out.println(222222222);
 		for(count = 0; count < pitches.size(); count++)
 		{
 			f0 += pitches.get(count);

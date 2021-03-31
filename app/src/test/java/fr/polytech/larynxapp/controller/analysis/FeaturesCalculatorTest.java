@@ -1,4 +1,4 @@
-package fr.polytech.larynxapp.model.analysis;
+package fr.polytech.larynxapp.controller.analysis;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -54,15 +54,15 @@ public class FeaturesCalculatorTest
         assertEquals(100d, featureCalculator.getfundamentalFreq(), 0.01);
     }
 
-//    @Test
-//    public void getShimmer()
-//    {
-//        assertEquals(0, featureCalculator.getShimmer(), 0.01);
-//    }
+    @Test
+    public void getShimmer()
+    {
+        assertEquals(0, featureCalculator.getShimmer(), 0.01);
+    }
 
-//    @Test
-//    public void getJitter()
-//    {
-//        assertEquals(0, featureCalculator.getJitter(), 0.01);
-//    }
+    @Test
+    public void getJitter()
+    {
+        assertEquals(0, featureCalculator.getJitter(), 0.01);
+    }
 }

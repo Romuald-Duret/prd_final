@@ -51,9 +51,9 @@ import be.tarsos.dsp.writer.WriterProcessor;
 
 import fr.polytech.larynxapp.R;
 import fr.polytech.larynxapp.model.Record;
-import fr.polytech.larynxapp.model.analysis.FeaturesCalculator;
-import fr.polytech.larynxapp.model.analysis.PitchProcessor;
-import fr.polytech.larynxapp.model.analysis.Yin;
+import fr.polytech.larynxapp.controller.analysis.FeaturesCalculator;
+import fr.polytech.larynxapp.controller.analysis.PitchProcessor;
+import fr.polytech.larynxapp.controller.analysis.Yin;
 import fr.polytech.larynxapp.model.audio.AudioData;
 import fr.polytech.larynxapp.model.database.DBManager;
 
@@ -387,6 +387,11 @@ public class HomeFragment extends Fragment {
         this.jitter = featuresCalculator.getJitter();
         f0 = featuresCalculator.getfundamentalFreq();
 
+        System.out.println("from wav file");
+        System.out.println("shimmer:"+shimmer);
+        System.out.println("jitter"+jitter);
+        System.out.println("f0:"+f0);
+
     }
 
     /**
@@ -686,6 +691,10 @@ public class HomeFragment extends Fragment {
         this.shimmer = featuresCalculator.getShimmer();
         this.jitter = featuresCalculator.getJitter();
         f0 = featuresCalculator.getfundamentalFreq();
+        System.out.println("from micro phone");
+        System.out.println("shimmer:"+shimmer);
+        System.out.println("jitter"+jitter);
+        System.out.println("f0:"+f0);
 
 
     }

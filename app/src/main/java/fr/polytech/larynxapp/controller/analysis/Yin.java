@@ -1,4 +1,4 @@
-package fr.polytech.larynxapp.model.analysis;
+package fr.polytech.larynxapp.controller.analysis;
 
 import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.pitch.PitchDetector;
