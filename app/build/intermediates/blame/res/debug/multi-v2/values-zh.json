@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Karma\\.gradle\\caches\\transforms-2\\files-2.1\\0ef5b6bbbc656a38601a19df021c901e\\jetified-AndroidFilePicker-0.7.0-x\\res\\values-zh\\values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,115,168,230,281,355,419,478,536,593,651,713",
+                        "endColumns": "59,52,61,50,73,63,58,57,56,57,61,62",
+                        "endOffsets": "110,163,225,276,350,414,473,531,588,646,708,771"
+                    }
+                }
+            ]
+        }
+    ]
+}
