@@ -7,4 +7,7 @@
     <color name="colorAccent">#066381</color>
     <color name="transparent">#00000000</color>
     <color name="gray">#DCDCDC</color>
+    <color name="backgroundblue">#78BFF5</color>
+    <color name="baseblue">#6297DE</color>
+
 </resources>

@@ -3,6 +3,7 @@ package fr.polytech.larynxapp.controller.home;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
+import android.media.audiofx.Visualizer;
 import android.net.Uri;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -59,6 +62,8 @@ import fr.polytech.larynxapp.model.database.DBManager;
 
 
 public class HomeFragment extends Fragment {
+
+    private ViewFlipper include_layout;
 
     /**
      * The status of the mic button, can have the 3 status listed in Status_mic
@@ -204,6 +209,7 @@ public class HomeFragment extends Fragment {
         return jitter;
     }
 
+
     /**
      * create the home's view
      * @param inflater inflater Used to load the xml layout file as View
@@ -217,10 +223,12 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initPermissions();
         // create the components
+        include_layout = root.findViewById(R.id.viewFlipper);
+
         manager = new DBManager( this.getContext() );
         button_restart = root.findViewById(R.id.reset_button);
         button_mic = root.findViewById(R.id.mic_button);
-        button_file = root.findViewById(R.id.button);
+        //button_file = root.findViewById(R.id.button);
         icon_mic = root.findViewById(R.id.mic_icon);
         status_mic_button = Status_mic.DEFAULT;
         progressBar = root.findViewById(R.id.progressBar_mic);
@@ -244,30 +252,23 @@ public class HomeFragment extends Fragment {
         switch (status_mic_button) {
             case DEFAULT:
                 progressBar.setVisibility(View.INVISIBLE);
-                icon_mic.setBackgroundResource(R.drawable.ic_mic);
+                include_layout.setDisplayedChild(0);
+                icon_mic.setBackgroundResource(R.drawable.ic_microphone);
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.RECORDING);
                     }
                 });
-                button_file.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                        intent.setType("*/*");
-                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-                        startActivityForResult(intent, 1);
-                    }
 
-                });
                 button_restart.setVisibility(View.GONE);
                 break;
 
             case RECORDING:
                 progressBar.setProgress(0);
+
                 startRecording();
                 progressBar.setVisibility(View.VISIBLE);
-                icon_mic.setBackgroundResource(R.drawable.ic_stop_black_24dp);
+                icon_mic.setBackgroundResource(R.drawable.ic_stop);
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.CANCELED);
@@ -280,7 +281,7 @@ public class HomeFragment extends Fragment {
             case CANCELED:
                 progressBar.setVisibility(View.VISIBLE);
                 stopRecording();
-                icon_mic.setBackgroundResource(R.drawable.ic_replay_black_24dp);
+                icon_mic.setBackgroundResource(R.drawable.ic_repeat);
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.DEFAULT);
@@ -292,6 +293,7 @@ public class HomeFragment extends Fragment {
 
             case FINISH:
                 progressBar.setVisibility(View.INVISIBLE);
+                include_layout.setDisplayedChild(1);
                 icon_mic.setBackgroundResource(R.drawable.ic_save_black_24dp);
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
