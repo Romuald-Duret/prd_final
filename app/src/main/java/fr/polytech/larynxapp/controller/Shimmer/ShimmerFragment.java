@@ -32,6 +32,10 @@ import java.util.List;
 
 public class ShimmerFragment extends Fragment {
 
+
+    //The max value of Shimmer
+    private Float maxShimmer;
+
     /**
      * The line chart where the shimmer values will be shown
      */
@@ -117,6 +121,7 @@ public class ShimmerFragment extends Fragment {
         ArrayList<ILineDataSet> shimmerDataSets = new ArrayList<>();
         shimmerDataSets.add((shimmerLineSet));
 
+        // Ligne de limite du Shimmer
         LimitLine shimmerLl = new LimitLine(0.35f);
         shimmerLl.setLabel("Limite shimmer");
         shimmerLl.setLineColor(Color.RED);
@@ -144,6 +149,8 @@ public class ShimmerFragment extends Fragment {
         for(int i = 0; i < records.size(); i++) {
             dataVals.add(new Entry(i, (float) records.get(i).getShimmer()));
         }
+
+        dataVals.add(new Entry(dataVals.size(),(float) 5.4 ));
         return dataVals;
     }
 
@@ -181,6 +188,7 @@ public class ShimmerFragment extends Fragment {
      */
     private void setShimmerChart(LineChart chart){
 
+
         YAxis yAxis = chart.getAxisLeft();                  //The line chart's y axis
         XAxis xAxis = chart.getXAxis();                     //The line chart's x axis
         chart.getAxisLeft().setEnabled(true);
@@ -191,8 +199,8 @@ public class ShimmerFragment extends Fragment {
         yAxis.setAxisLineWidth(0.2f);
         yAxis.setAxisLineColor(Color.BLACK);
         yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(1f);
         yAxis.setTextSize(12f);
+        yAxis.setSpaceTop(20f); // make the Y axis responsive
 
         //Set the x axis property
         xAxis.setAxisLineWidth(1f);

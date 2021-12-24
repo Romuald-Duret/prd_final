@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -65,6 +66,8 @@ public class HomeFragment extends Fragment {
 
     private ViewFlipper include_layout;
 
+    private TextView hintTV;
+
     /**
      * The status of the mic button, can have the 3 status listed in Status_mic
      */
@@ -81,6 +84,13 @@ public class HomeFragment extends Fragment {
      *  The font of the mic button, hold the button
      */
     private ImageView button_mic;
+
+
+    /**
+     *  The font of the mic button, hold the button
+     */
+    private ImageView button_save;
+
 
     /**
      *  The icon of the mic button
@@ -222,14 +232,18 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initPermissions();
+
         // create the components
         include_layout = root.findViewById(R.id.viewFlipper);
-
         manager = new DBManager( this.getContext() );
         button_restart = root.findViewById(R.id.reset_button);
         button_mic = root.findViewById(R.id.mic_button);
         //button_file = root.findViewById(R.id.button);
         icon_mic = root.findViewById(R.id.mic_icon);
+
+        button_save = root.findViewById(R.id.save);
+
+        hintTV = root.findViewById(R.id.hint_tv);
         status_mic_button = Status_mic.DEFAULT;
         progressBar = root.findViewById(R.id.progressBar_mic);
         progressBar.getProgressDrawable().setColorFilter(
@@ -254,6 +268,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.INVISIBLE);
                 include_layout.setDisplayedChild(0);
                 icon_mic.setBackgroundResource(R.drawable.ic_microphone);
+                hintTV.setText("Pour commencer un enregistrement, appuyez sur le micro");
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.RECORDING);
@@ -269,6 +284,7 @@ public class HomeFragment extends Fragment {
                 startRecording();
                 progressBar.setVisibility(View.VISIBLE);
                 icon_mic.setBackgroundResource(R.drawable.ic_stop);
+                hintTV.setText("Appuyer sur l'icone pour arrêter l'enregistrement");
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.CANCELED);
@@ -282,6 +298,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.VISIBLE);
                 stopRecording();
                 icon_mic.setBackgroundResource(R.drawable.ic_repeat);
+                hintTV.setText("Appuyer sur l'icone pour recommencer l'enregistrement");
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.DEFAULT);
@@ -295,15 +312,17 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.INVISIBLE);
                 include_layout.setDisplayedChild(1);
                 icon_mic.setBackgroundResource(R.drawable.ic_save_black_24dp);
-                button_mic.setOnClickListener(new View.OnClickListener() {
+                hintTV.setText("Appuyer sur une icone pour recommencer ou sauvegarder l'enregistrement");
+                button_save.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+                        //System.out.println("bouton save activé");
                         save();
                         analyseData();
                         manager.updateRecordVoiceFeatures(fileName, jitter*100, shimmer, f0);
 
                         updateView(Status_mic.DEFAULT);
                     }
-                });
+                } );
 
                 button_restart.setVisibility(View.VISIBLE);
                 button_restart.setOnClickListener(new View.OnClickListener() {
@@ -625,6 +644,8 @@ public class HomeFragment extends Fragment {
         Date currentDate = new Date( System.currentTimeMillis() );
         fileName = dateFormat.format( currentDate );
         String newPath = FILE_PATH + File.separator + fileName + ".wav";
+
+
 
         if ( renameFile( finalPath, newPath ) ) {
             setFinalPath( newPath );

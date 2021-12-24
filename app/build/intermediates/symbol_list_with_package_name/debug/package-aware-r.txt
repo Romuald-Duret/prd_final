@@ -1426,7 +1426,6 @@ id bounce
 id btn_confirm_file_picker
 id btn_go_back_file_picker
 id btn_selected_all_file_picker
-id button
 id buttonDateLayout
 id buttonPanel
 id cache_measures
@@ -1501,7 +1500,6 @@ id group_divider
 id grouping
 id groups
 id hint_tv
-id hint_tv1
 id home
 id homeAsUp
 id honorRequest
@@ -1774,7 +1772,6 @@ layout fragment_home
 layout fragment_jitter
 layout fragment_save
 layout fragment_shimmer
-layout homedebase
 layout item_list_file_picker
 layout item_nav_file_picker
 layout item_single_choise_list_file_picker

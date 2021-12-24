@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "/Users/romu/StudioProjects/prd_final/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Karma\\.gradle\\caches\\transforms-2\\files-2.1\\7eff17de37c656811ab39056e808c99c\\appcompat-1.2.0\\res\\values-port\\values-port.xml",
+                    "source": "/Users/romu/.gradle/caches/transforms-2/files-2.1/7eff17de37c656811ab39056e808c99c/appcompat-1.2.0/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
