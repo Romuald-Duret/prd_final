@@ -1,4 +1,4 @@
-#Fri Dec 24 18:46:45 CET 2021
+#Sun Dec 26 00:44:45 CET 2021
 base.0=/Users/romu/StudioProjects/prd_final/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
