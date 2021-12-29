@@ -54,7 +54,7 @@ public class HistoryFragment extends Fragment {
 
         //********************************Creation of the line chart*******************************/
         final ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        if(!records.isEmpty() ){
+        if(!records.isEmpty() ) {
             LineDataSet lineDataSet = new LineDataSet(dataValues(records.get(0)), records.get(0).getName());
             setLineData(lineDataSet);
             dataSets.add((lineDataSet));
@@ -62,10 +62,10 @@ public class HistoryFragment extends Fragment {
 
         }
 
+
         //***********************************Creation of the list**********************************/
         listview = root.findViewById(R.id.listViewRecords);
-        final ArrayAdapter<Record> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
-                android.R.layout.simple_list_item_1, records);
+        final ListAdapter adapter = new ListAdapter(getActivity().getApplicationContext(),R.layout.liste_view_item, records);
         listview.setAdapter(adapter);
 
         //the delete function

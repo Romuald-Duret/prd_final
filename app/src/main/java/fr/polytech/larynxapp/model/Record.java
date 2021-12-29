@@ -84,7 +84,15 @@ public class Record {
 	public String getName() {
         return name;
     }
-	
+
+
+    public String getCommomName(){
+		char[] commonName = this.getName().toCharArray();
+		commonName[13] = 'h';
+		String res = String.valueOf(commonName);
+
+		return res.substring(0,res.length()-3);
+	}
 	/**
 	 * Setter for the name of the record.
 	 *

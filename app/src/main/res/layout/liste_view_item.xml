@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+>
+
+        <TextView
+            android:id="@+id/datetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dip"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="Date d'enregistrement"/>
+
+        <TextView
+            android:id="@+id/datetextvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginEnd="6dip"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:text="Le 26-04-22 à 16h24"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="3dp"
+        android:layout_height="fill_parent"
+        android:background="@color/baseblue"
+        android:layout_marginRight="6dip"/>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dip"
+            android:weightSum="4">
+
+
+            <TextView
+                android:id="@+id/secondLine"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:text="Shimmer : "
+                android:textSize="16sp"
+                android:singleLine="true"
+                android:layout_weight="2"/>
+
+            <View
+                android:id="@+id/shimmercolorview"
+                android:layout_marginEnd="200dp"
+                android:layout_width="20dp"
+                android:layout_height="fill_parent"
+                android:background="@color/baseblue"
+                android:layout_marginRight="6dip"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:weightSum="4">
+
+
+
+            <TextView
+                android:id="@+id/firstLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="Jitter :"
+                android:layout_weight="2"/>
+
+            <View
+                android:id="@+id/jittercolorview"
+                android:layout_marginEnd="200dp"
+                android:layout_width="20dp"
+                android:layout_height="fill_parent"
+                android:background="@color/baseblue"
+                android:layout_marginRight="6dip"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
