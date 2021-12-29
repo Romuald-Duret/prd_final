@@ -10,14 +10,15 @@
 
     <TextView
         android:id="@+id/jitter_text_view"
-        android:layout_width="414dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/jitter_line_chart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.1"
+        android:gravity="center_horizontal" />
 
 
     <com.github.mikephil.charting.charts.LineChart

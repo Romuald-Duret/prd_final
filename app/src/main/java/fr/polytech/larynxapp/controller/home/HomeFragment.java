@@ -284,7 +284,7 @@ public class HomeFragment extends Fragment {
                 startRecording();
                 progressBar.setVisibility(View.VISIBLE);
                 icon_mic.setBackgroundResource(R.drawable.ic_stop);
-                hintTV.setText("Appuyer sur l'icone pour arrêter l'enregistrement");
+                hintTV.setText("Enregistrement en cours... Appuyez sur l'icone pour arrêter l'enregistrement");
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.CANCELED);
@@ -298,7 +298,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.VISIBLE);
                 stopRecording();
                 icon_mic.setBackgroundResource(R.drawable.ic_repeat);
-                hintTV.setText("Appuyer sur l'icone pour recommencer l'enregistrement");
+                hintTV.setText("Appuyez sur l'icone pour recommencer l'enregistrement");
                 button_mic.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         updateView(Status_mic.DEFAULT);
@@ -312,7 +312,7 @@ public class HomeFragment extends Fragment {
                 progressBar.setVisibility(View.INVISIBLE);
                 include_layout.setDisplayedChild(1);
                 icon_mic.setBackgroundResource(R.drawable.ic_save_black_24dp);
-                hintTV.setText("Appuyer sur une icone pour recommencer ou sauvegarder l'enregistrement");
+                hintTV.setText("Enregistrement terminé. Appuyez sur une icone pour recommencer ou sauvegarder l'enregistrement");
                 button_save.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         //System.out.println("bouton save activé");

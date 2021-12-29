@@ -34,7 +34,6 @@ public class ShimmerFragment extends Fragment {
 
 
     //The max value of Shimmer
-    private Float maxShimmer;
 
     /**
      * The line chart where the shimmer values will be shown
@@ -95,11 +94,16 @@ public class ShimmerFragment extends Fragment {
         startDateButton = root.findViewById(R.id.startDate);
         resetButton = root.findViewById(R.id.resetDate);
         dateValues = dateValues();
+
+        for(String str : dateValues){
+            System.out.println(str);
+        }
+
         initDateButton();
 
         //******************************Creation of the shimmer's chart*****************************/
         final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
-        shimmerTextView.setText("Shimmer");
+        shimmerTextView.setText("Analyse Shimmer");
         shimmerTextView.setTextSize(20f);
         shimmerMpLineChart = root.findViewById(R.id.shimmer_line_chart);
         setShimmerChart(shimmerMpLineChart);
@@ -121,10 +125,18 @@ public class ShimmerFragment extends Fragment {
         ArrayList<ILineDataSet> shimmerDataSets = new ArrayList<>();
         shimmerDataSets.add((shimmerLineSet));
 
+        ArrayList<Entry> point = new ArrayList<>();
+        point.add(new Entry(0, 0.35f));
+        LineDataSet pointLine = new LineDataSet(point,"Point");
+        pointLine.setValueTextSize(0f);
+        pointLine.setDrawCircles(false);
+        shimmerDataSets.add(pointLine);
+
         // Ligne de limite du Shimmer
         LimitLine shimmerLl = new LimitLine(0.35f);
         shimmerLl.setLabel("Limite shimmer");
         shimmerLl.setLineColor(Color.RED);
+        shimmerLl.enableDashedLine(10f, 10f, 0f);
         shimmerMpLineChart.getAxisLeft().addLimitLine(shimmerLl);
 
         XAxis shimmerXAxis = shimmerMpLineChart.getXAxis();
@@ -149,8 +161,6 @@ public class ShimmerFragment extends Fragment {
         for(int i = 0; i < records.size(); i++) {
             dataVals.add(new Entry(i, (float) records.get(i).getShimmer()));
         }
-
-        dataVals.add(new Entry(dataVals.size(),(float) 5.4 ));
         return dataVals;
     }
 
@@ -196,22 +206,26 @@ public class ShimmerFragment extends Fragment {
         chart.getAxisRight().setEnabled(false);             //Disable the right axis
 
         //Set the y axis property
-        yAxis.setAxisLineWidth(0.2f);
+        yAxis.setAxisLineWidth(1.5f);
         yAxis.setAxisLineColor(Color.BLACK);
         yAxis.setAxisMinimum(0f);
         yAxis.setTextSize(12f);
         yAxis.setSpaceTop(20f); // make the Y axis responsive
 
         //Set the x axis property
-        xAxis.setAxisLineWidth(1f);
+        xAxis.setAxisLineWidth(1.5f);
         xAxis.setAxisLineColor(Color.BLACK);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(12f);
+        xAxis.setAxisMinimum(-1f); // begin the chart at -1 (without we can't see the first value label)
+        xAxis.setLabelCount(5); // max number of visible labels on screen (without -> overlapping labels)
 
         chart.getLegend().setEnabled(false);
         chart.getDescription().setEnabled(false);
         chart.setScaleEnabled(true);
-        chart.setTouchEnabled(false);
+        chart.setTouchEnabled(true);
+        chart.setScaleYEnabled(false);
+
     }
 
     /**
@@ -254,6 +268,8 @@ public class ShimmerFragment extends Fragment {
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();
+
+                //datePickerDialog.setSelectableDays();
             }
         });
 
@@ -266,6 +282,7 @@ public class ShimmerFragment extends Fragment {
         });
 
     }
+
 
     /**
      * Set year

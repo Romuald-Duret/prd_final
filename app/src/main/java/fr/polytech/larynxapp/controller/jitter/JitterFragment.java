@@ -89,7 +89,7 @@ public class JitterFragment extends Fragment {
         initDateButton();
         //******************************Creation of the jitter's chart******************************/
         final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
-        jitterTextView.setText("Jitter");
+        jitterTextView.setText("Analyse Jitter");
         jitterTextView.setTextSize(20f);
 
         jitterMpLineChart = root.findViewById(R.id.jitter_line_chart);
@@ -112,15 +112,24 @@ public class JitterFragment extends Fragment {
         ArrayList<ILineDataSet> jitterDataSets = new ArrayList<>();
         jitterDataSets.add((jitterLineSet));
 
+        ArrayList<Entry> point = new ArrayList<>();
+        point.add(new Entry(0, 2.04f));
+        LineDataSet pointLine = new LineDataSet(point,"Point");
+        pointLine.setDrawCircles(false);
+        pointLine.setValueTextSize(0f);
+        jitterDataSets.add(pointLine);
+
         LimitLine jitterLl = new LimitLine(2.04f);
         jitterLl.setLabel("Limite jitter");
         jitterLl.setLineColor(Color.RED);
+        jitterLl.enableDashedLine(10f, 10f, 0f);
         jitterMpLineChart.getAxisLeft().addLimitLine(jitterLl);
 
         XAxis jitterXAxis = jitterMpLineChart.getXAxis();
         jitterXAxis.setGranularity(1f);
         jitterXAxis.setSpaceMax(0.1f);
         jitterXAxis.setSpaceMin(0.1f);
+        jitterXAxis.setAxisMinimum(-1f); // begin the chart at -1 (without we can't see the first value label)
         jitterXAxis.setValueFormatter(new com.github.mikephil.charting.formatter.IndexAxisValueFormatter(dateValues()));
 
         LineData jitterData = new LineData(jitterDataSets);
@@ -171,8 +180,8 @@ public class JitterFragment extends Fragment {
         //Set the y axis property
         yAxis.setAxisLineWidth(2f);
         yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMinimum(0f);
-        yAxis.setAxisMaximum(3f);
+        yAxis.setAxisMinimum(2f);
+        yAxis.setSpaceTop(20f); // make the Y axis responsive
         yAxis.setTextSize(12f);
         PercentFormatter percentFormatter = new PercentFormatter();
         yAxis.setValueFormatter(percentFormatter);
@@ -182,12 +191,11 @@ public class JitterFragment extends Fragment {
         xAxis.setAxisLineColor(Color.BLACK);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(12f);
+        xAxis.setLabelCount(5); // max number of visible labels on screen (without -> overlapping labels)
 
         chart.getLegend().setEnabled(false);
         chart.getDescription().setEnabled(false);
 
-        chart.setScaleEnabled(true);
-        chart.setTouchEnabled(false);
     }
 
     /**
