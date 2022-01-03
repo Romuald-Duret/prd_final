@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/rounded_border">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informations d'enregistrement"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp"/>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/datetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dip"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="Date d'enregistrement : "/>
+
+        <TextView
+            android:id="@+id/datetextvaluedialog"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+
+            android:textSize="16sp"
+            android:text="Le 26-04-22 à 16h24"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+
+
+        <TextView
+            android:id="@+id/secondLine"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Shimmer : "
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/shimmerdialogvalue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="0.64"
+            android:textSize="16sp"
+            android:singleLine="true"/>
+
+        <View
+            android:id="@+id/shimmercolorview"
+            android:layout_marginEnd="200dp"
+            android:layout_width="20dp"
+            android:layout_height="fill_parent"
+            android:background="@color/baseblue"
+            android:layout_marginRight="6dip"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
+
+        <TextView
+            android:id="@+id/firstLine"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Jitter :"/>
+
+        <TextView
+            android:id="@+id/jitterdialogvalue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="1,4%"/>
+
+
+        <View
+            android:id="@+id/jittercolorview"
+            android:layout_marginEnd="200dp"
+            android:layout_width="20dp"
+            android:layout_height="fill_parent"
+            android:background="@color/baseblue"
+            android:layout_marginRight="6dip"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/custom_dialog_explaination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:textSize="11sp"
+        android:text="Le seuil limite de la valeur du shimmer est de 0.35, la couleur indiquée varie avec une marge de + ou - 0.05.\nLe seuil limite de la valeur du jitter est de 2% , la couleur indiquée varie avec une marge de + ou - 0.5%.\nUn résutlat vert indique une valeur en dessous du seuil, un résultat jaune indique une valeur proche du seuil tandis qu'un résultat rouge indique une valeur au dessus du seuil."
+/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Fermer"
+        android:textColor="@color/baseblue"
+        android:background="@color/transparent"
+        android:id="@+id/cancel_button"/>
+</LinearLayout>

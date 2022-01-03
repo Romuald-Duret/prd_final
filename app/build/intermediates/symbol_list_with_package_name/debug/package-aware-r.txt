@@ -794,6 +794,7 @@ color background_material_dark
 color background_material_light
 color backgroundblue
 color baseblue
+color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -942,6 +943,7 @@ color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
 color transparent
+color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1283,6 +1285,7 @@ drawable design_snackbar_background
 drawable ic_arrow_right_file_picker
 drawable ic_back_file_picker
 drawable ic_bt_file_picker
+drawable ic_calendar
 drawable ic_check_black_24dp
 drawable ic_circle
 drawable ic_compressed_file_picker
@@ -1309,8 +1312,10 @@ drawable ic_notifications_black_24dp
 drawable ic_pdf_file_picker
 drawable ic_play_arrow_black_24dp
 drawable ic_repeat
+drawable ic_repeat_black
 drawable ic_replay_black_24dp
 drawable ic_save_black_24dp
+drawable ic_send
 drawable ic_stop
 drawable ic_stop_black_24dp
 drawable ic_trending_up_black_24dp
@@ -1335,6 +1340,8 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable rec_loading_file_picker
+drawable rounded_border
+drawable semi_rounded_border
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 font lgc
@@ -1429,6 +1436,7 @@ id btn_selected_all_file_picker
 id buttonDateLayout
 id buttonPanel
 id cache_measures
+id cancel_button
 id cb_list_file_picker
 id center
 id center_horizontal
@@ -1450,8 +1458,11 @@ id coordinator
 id cos
 id custom
 id customPanel
+id custom_dialog_explaination
+id dateChoiceTitle
 id datetext
 id datetextvalue
+id datetextvaluedialog
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -1481,6 +1492,7 @@ id easeOut
 id edit_query
 id end
 id endDateDescription
+id endingDate
 id enterAlways
 id enterAlwaysCollapsed
 id exitUntilCollapsed
@@ -1522,6 +1534,7 @@ id iv_icon_list_file_picker
 id jitter_line_chart
 id jitter_text_view
 id jittercolorview
+id jitterdialogvalue
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -1585,7 +1598,9 @@ id ratio
 id rb_list_file_picker
 id rectangles
 id resetDate
+id resetDateTest
 id reset_button
+id reset_date_layout
 id reverseSawtooth
 id right
 id right_icon
@@ -1619,6 +1634,7 @@ id selected
 id shimmer_line_chart
 id shimmer_text_view
 id shimmercolorview
+id shimmerdialogvalue
 id shortcut
 id showCustom
 id showHome
@@ -1643,6 +1659,7 @@ id start
 id startDate
 id startHorizontal
 id startVertical
+id startingDate
 id staticLayout
 id staticPostLayout
 id stop
@@ -1757,6 +1774,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout custom_dialog
+layout custom_dialog_info
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

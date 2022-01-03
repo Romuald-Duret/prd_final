@@ -10,4 +10,7 @@
     <color name="backgroundblue">#78BFF5</color>
     <color name="baseblue">#6297DE</color>
 
+    <color name="black">#000000</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,7 +50,7 @@ public class ShimmerFragment extends Fragment {
     /**
      * The startDate Button
      */
-    private ImageButton startDateButton;
+    private ImageView startDateButton;
 
 
     /**
@@ -74,7 +75,7 @@ public class ShimmerFragment extends Fragment {
     /**
      * the reset Button
      */
-    private ImageButton resetButton;
+    private ImageView resetButton;
 
     /**
      * @param inflater Used to load the xml layout file as View
@@ -99,12 +100,12 @@ public class ShimmerFragment extends Fragment {
             System.out.println(str);
         }
 
-        initDateButton();
+        //initDateButton();
 
         //******************************Creation of the shimmer's chart*****************************/
         final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
         shimmerTextView.setText("Analyse Shimmer");
-        shimmerTextView.setTextSize(20f);
+        shimmerTextView.setTextSize(25f);
         shimmerMpLineChart = root.findViewById(R.id.shimmer_line_chart);
         setShimmerChart(shimmerMpLineChart);
         setShimmerChartData();

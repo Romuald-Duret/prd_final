@@ -1,108 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="?attr/actionBarSize"
-    >
+    android:padding="10dip"
+    android:background="@color/backgroundblue">
 
-    <TextView
-        android:id="@+id/jitter_text_view"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        app:layout_constraintHeight_percent="0.05"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.1"
-        android:gravity="center_horizontal" />
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@drawable/rounded_border"
+        android:elevation="7dp"
+        android:gravity="center">
 
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/jitter_line_chart"
+        <TextView
+            android:id="@+id/jitter_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/baseblue"
+            android:text="Analyse jitter"
+            android:textSize="25sp"
+            android:fontFamily="@font/lgc"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintVertical_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/jitter_text_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="500dp"
+        android:gravity="center"
+        android:layout_margin="10dip"
+        android:padding="12dp"
+        android:background="@drawable/rounded_border"
+        android:elevation="7dp">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/jitter_line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+    </LinearLayout>
 
 
-    </com.github.mikephil.charting.charts.LineChart>
 
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/buttonDateLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jitter_line_chart">
+        android:layout_height="55dp"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:background="@drawable/rounded_border"
+        android:elevation="7dp">
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/startDate"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:background="@drawable/background_button"
-            android:src="@drawable/ic_date_range_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.2"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintWidth_percent="0.15" />
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_calendar" />
 
         <TextView
             android:id="@+id/endDateDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="Choisissez la date que vous souhaitez voir"
             android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.42"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="1.0" />
+            android:fontFamily="@font/lgc"/>
 
 
-        <ImageButton
+        <ImageView
             android:id="@+id/resetDate"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:background="@drawable/background_button"
-            android:src="@drawable/ic_replay_black_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.90"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintWidth_percent="0.10" />
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_repeat_black"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

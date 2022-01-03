@@ -86,6 +86,12 @@ public class Record {
     }
 
 
+	/**
+
+	 * Getter for a better name of the record.
+	 *
+	 * @return the new name of the record
+	 */
     public String getCommomName(){
 		char[] commonName = this.getName().toCharArray();
 		commonName[13] = 'h';

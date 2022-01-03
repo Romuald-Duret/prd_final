@@ -21,7 +21,7 @@
       "properties": {
         "packageId": "fr.polytech.larynxapp",
         "split": "",
-        "minSdkVersion": "17"
+        "minSdkVersion": "21"
       }
     }
   ]

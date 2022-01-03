@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,10 +47,10 @@ public class JitterFragment extends Fragment {
     /**
      * The startDate Button
      */
-    private ImageButton startDateButton;
+    private ImageView startDateButton;
 
 
-    private ImageButton resetButton;
+    private ImageView resetButton;
 
     /**
      * The startDate
@@ -90,7 +91,7 @@ public class JitterFragment extends Fragment {
         //******************************Creation of the jitter's chart******************************/
         final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
         jitterTextView.setText("Analyse Jitter");
-        jitterTextView.setTextSize(20f);
+        jitterTextView.setTextSize(25f);
 
         jitterMpLineChart = root.findViewById(R.id.jitter_line_chart);
         setJitterChart(jitterMpLineChart);
@@ -180,7 +181,7 @@ public class JitterFragment extends Fragment {
         //Set the y axis property
         yAxis.setAxisLineWidth(2f);
         yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMinimum(2f);
+        yAxis.setAxisMinimum(0f);
         yAxis.setSpaceTop(20f); // make the Y axis responsive
         yAxis.setTextSize(12f);
         PercentFormatter percentFormatter = new PercentFormatter();
