@@ -2,6 +2,7 @@ package fr.polytech.larynxapp.controller.Shimmer;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import fr.polytech.larynxapp.R;
@@ -27,14 +31,15 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class ShimmerFragment extends Fragment {
-
-
-    //The max value of Shimmer
 
     /**
      * The line chart where the shimmer values will be shown
@@ -48,34 +53,23 @@ public class ShimmerFragment extends Fragment {
     private List<Record> records;
 
     /**
-     * The startDate Button
-     */
-    private ImageView startDateButton;
-
-
-    /**
-     * The startDate
-     */
-    private int startDateDay;
-    private int startDateMonth;
-    private int startDateYear;
-
-    /**
-     * The endDate
-     */
-    private int endDateDay;
-    private int endDateMonth;
-    private int endDateYear;
-
-    /**
      * to store the data
      */
     private String[] dateValues;
 
     /**
-     * the reset Button
+     * the reset Layout
      */
-    private ImageView resetButton;
+    private LinearLayout resetLayout;
+
+    private LinearLayout startingDateLayout;
+    private LinearLayout endingDateLayout;
+
+    private LocalDate startdate;
+    private LocalDate endingdate;
+
+    private TextView textstartdate;
+    private TextView textenddate;
 
     /**
      * @param inflater Used to load the xml layout file as View
@@ -86,21 +80,40 @@ public class ShimmerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //Sets the view the the fragment
-        View root = inflater.inflate(R.layout.fragment_shimmer, container, false);
+        final View root = inflater.inflate(R.layout.fragment_shimmer, container, false);
 
         //Read data from the database
         records = new DBManager(getContext()).query();
 
         //Initialization module
-        startDateButton = root.findViewById(R.id.startDate);
-        resetButton = root.findViewById(R.id.resetDate);
         dateValues = dateValues();
 
         for(String str : dateValues){
             System.out.println(str);
         }
 
+
+        //Initialization of period for the chart
+        startingDateLayout = root.findViewById(R.id.startingDate);
+        endingDateLayout = root.findViewById(R.id.endingDate);
+        textstartdate = root.findViewById(R.id.textstartdate);
+        textenddate = root.findViewById(R.id.textenddate);
+
+
+        setPeriodChart();
+
         //initDateButton();
+        resetLayout = root.findViewById(R.id.reset_date_layout);
+        resetLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                records = new DBManager(getContext()).query();
+                setShimmerChartData();
+
+                textenddate.setText("--/--/----");
+                textstartdate.setText("--/--/----");
+            }
+        });
 
         //******************************Creation of the shimmer's chart*****************************/
         final TextView shimmerTextView = root.findViewById(R.id.shimmer_text_view);
@@ -165,18 +178,6 @@ public class ShimmerFragment extends Fragment {
         return dataVals;
     }
 
-    /**
-     * Initialisation of the jitter data's arraylist
-     * @return the jitter data's arraylist
-     */
-    private ArrayList<Entry> jitterDataValues(){
-        ArrayList<Entry> dataVals = new ArrayList<>();
-        for(int i = 0; i < records.size(); i++) {
-            dataVals.add(new Entry(i, (float) records.get(i).getJitter()));
-        }
-        return dataVals;
-    }
-
 
     /**
      * Initialisation of the dates arraylist
@@ -229,25 +230,20 @@ public class ShimmerFragment extends Fragment {
 
     }
 
-    /**
-     * Button initialization
-     */
-    public void initDateButton() {
-        startDateButton.setOnClickListener(new View.OnClickListener() {
+    public void setPeriodChart(){
+
+        startingDateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                records = new DBManager(getContext()).query();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                setStartDateYear(year);
-                                setStartDateMonth(month+1);
-                                setStartDateDay(day);
                                 String dateDay = String.valueOf(day);
                                 String dateMonth = String.valueOf(month+1);
                                 if(day < 10){
@@ -257,56 +253,83 @@ public class ShimmerFragment extends Fragment {
                                     dateMonth = "0" + dateMonth;
                                 }
 
+
                                 //Process the file name
                                 String test = dateDay +"-" + dateMonth + "-" + year;
+
+                                textstartdate.setText(dateDay+"/"+dateMonth+"/"+year);
+
+                                startdate = LocalDate.parse(test, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+
                                 for(int i = 0; i < records.size(); i++){
                                     String tmp = records.get(i).getName().split(" ")[0];
-                                    if(!test.equals(tmp)){
+                                    LocalDate tmpdate = LocalDate.parse(tmp, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                    if(tmpdate.isBefore(startdate)){
                                         records.remove(i);
                                         i--;
                                     }
                                 }
+                                setShimmerChartData();
+                            }
+                        }, year, month, dayOfMonth);
+                datePickerDialog.show();
+            }
+        });
+
+
+
+        endingDateLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                String dateDay = String.valueOf(day);
+                                String dateMonth = String.valueOf(month+1);
+                                if(day < 10){
+                                    dateDay = "0" + dateDay;
+                                }
+                                if(month < 10){
+                                    dateMonth = "0" + dateMonth;
+                                }
+
+
+                                //Process the file name
+                                String test = dateDay +"-" + dateMonth + "-" + year;
+                                textenddate.setText(dateDay+"/"+dateMonth+"/"+year);
+
+                                endingdate = LocalDate.parse(test, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                for(int i = 0; i < records.size(); i++){
+                                    String tmp = records.get(i).getName().split(" ")[0];
+                                    LocalDate tmpdate = LocalDate.parse(tmp, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                    if(tmpdate.isAfter(endingdate)){
+                                        records.remove(i);
+                                        i--;
+                                    }
+                                }
+
+                                setShimmerChartData();
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();
 
-                //datePickerDialog.setSelectableDays();
             }
         });
 
-        //Add an event to the button
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setShimmerChartData();
-            }
-        });
-
-    }
 
 
-    /**
-     * Set year
-     * @param startDateYear The year you want to set.
-     */
-    public void setStartDateYear(int startDateYear) {
-        this.startDateYear = startDateYear;
-    }
 
-    /**
-     * Set month
-     * @param startDateMonth The month you want to set.
-     */
-    public void setStartDateMonth(int startDateMonth) {
-        this.startDateMonth = startDateMonth;
-    }
-
-    /**
-     * Set day
-     * @param startDateDay The day you want to set
-     */
-    public void setStartDateDay(int startDateDay) {
-        this.startDateDay = startDateDay;
     }
 
 }
