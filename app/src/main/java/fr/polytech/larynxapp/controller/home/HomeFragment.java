@@ -3,6 +3,7 @@ package fr.polytech.larynxapp.controller.home;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ClipData;
+import android.content.Context;
 import android.media.audiofx.Visualizer;
 import android.net.Uri;
 
@@ -25,6 +26,8 @@ import android.widget.ViewFlipper;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.scwang.wave.MultiWaveHeader;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,6 +57,7 @@ import be.tarsos.dsp.pitch.PitchDetectionResult;
 import be.tarsos.dsp.writer.WriterProcessor;
 
 import fr.polytech.larynxapp.R;
+import fr.polytech.larynxapp.controller.analysis.FeaturesCalculatorv2;
 import fr.polytech.larynxapp.model.Record;
 import fr.polytech.larynxapp.controller.analysis.FeaturesCalculator;
 import fr.polytech.larynxapp.controller.analysis.PitchProcessor;
@@ -238,10 +242,11 @@ public class HomeFragment extends Fragment {
         manager = new DBManager( this.getContext() );
         button_restart = root.findViewById(R.id.reset_button);
         button_mic = root.findViewById(R.id.mic_button);
-        //button_file = root.findViewById(R.id.button);
+
         icon_mic = root.findViewById(R.id.mic_icon);
 
         button_save = root.findViewById(R.id.save);
+
 
         hintTV = root.findViewById(R.id.hint_tv);
         status_mic_button = Status_mic.DEFAULT;
@@ -267,6 +272,8 @@ public class HomeFragment extends Fragment {
             case DEFAULT:
                 progressBar.setVisibility(View.INVISIBLE);
                 include_layout.setDisplayedChild(0);
+                icon_mic.getLayoutParams().height = dpToPx(64, getContext());
+                icon_mic.getLayoutParams().width = dpToPx(64, getContext());
                 icon_mic.setBackgroundResource(R.drawable.ic_microphone);
                 hintTV.setText("Pour commencer un enregistrement, appuyez sur le micro");
                 button_mic.setOnClickListener(new View.OnClickListener() {
@@ -297,6 +304,8 @@ public class HomeFragment extends Fragment {
             case CANCELED:
                 progressBar.setVisibility(View.VISIBLE);
                 stopRecording();
+                icon_mic.getLayoutParams().height = dpToPx(48, getContext());
+                icon_mic.getLayoutParams().width = dpToPx(48, getContext());
                 icon_mic.setBackgroundResource(R.drawable.ic_repeat);
                 hintTV.setText("Appuyez sur l'icone pour recommencer l'enregistrement");
                 button_mic.setOnClickListener(new View.OnClickListener() {
@@ -405,7 +414,7 @@ public class HomeFragment extends Fragment {
         featuresCalculator.initPeriodsSearch();
         featuresCalculator.searchPitchPositions();
         this.shimmer = featuresCalculator.getShimmer();
-        this.jitter = featuresCalculator.getJitter();
+        this.jitter = featuresCalculator.getJitterv2();
         f0 = featuresCalculator.getfundamentalFreq();
 
         System.out.println("from wav file");
@@ -710,8 +719,8 @@ public class HomeFragment extends Fragment {
             }
         }
         audioData.processData();
-        FeaturesCalculator featuresCalculator = new FeaturesCalculator(audioData, pitches);
-        this.shimmer = featuresCalculator.getShimmer();
+        FeaturesCalculatorv2 featuresCalculator = new FeaturesCalculatorv2(audioData, pitches);
+        this.shimmer = featuresCalculator.getShimmerv2();
         this.jitter = featuresCalculator.getJitter();
         f0 = featuresCalculator.getfundamentalFreq();
         System.out.println("from micro phone");
@@ -796,5 +805,11 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-}
+    }
+
+
+    public static int dpToPx(int dp, Context context) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
 }

@@ -14,7 +14,7 @@ public class FeaturesCalculatorTest
 {
 
     private List<Float> pitches;
-    private FeaturesCalculator featureCalculator;
+    private FeaturesCalculatorv2 featureCalculator;
 
     @Before
     public void setup()
@@ -42,7 +42,7 @@ public class FeaturesCalculatorTest
 
         audioData.processData();
 
-        featureCalculator = new FeaturesCalculator(audioData, pitches);
+        featureCalculator = new FeaturesCalculatorv2(audioData, pitches);
     }
 
 
@@ -57,7 +57,7 @@ public class FeaturesCalculatorTest
     @Test
     public void getShimmer()
     {
-        assertEquals(0, featureCalculator.getShimmer(), 0.01);
+        assertEquals(0, featureCalculator.getShimmerv2(), 0.01);
     }
 
     @Test

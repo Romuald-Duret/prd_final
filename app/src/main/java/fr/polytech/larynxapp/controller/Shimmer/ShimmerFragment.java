@@ -220,7 +220,7 @@ public class ShimmerFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(12f);
         xAxis.setAxisMinimum(-1f); // begin the chart at -1 (without we can't see the first value label)
-        xAxis.setLabelCount(5); // max number of visible labels on screen (without -> overlapping labels)
+        xAxis.setLabelCount(4); // max number of visible labels on screen (without -> overlapping labels)
 
         chart.getLegend().setEnabled(false);
         chart.getDescription().setEnabled(false);
@@ -261,7 +261,6 @@ public class ShimmerFragment extends Fragment {
 
                                 startdate = LocalDate.parse(test, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-
                                 for(int i = 0; i < records.size(); i++){
                                     String tmp = records.get(i).getName().split(" ")[0];
                                     LocalDate tmpdate = LocalDate.parse(tmp, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -271,7 +270,12 @@ public class ShimmerFragment extends Fragment {
                                         i--;
                                     }
                                 }
+
                                 setShimmerChartData();
+
+                                if(records.size()==0){
+                                    Toast.makeText(getContext(),"Aucun enregistrement lié à cette période ou période choisie incorrecte",Toast.LENGTH_LONG).show();
+                                }
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();
@@ -320,6 +324,10 @@ public class ShimmerFragment extends Fragment {
                                 }
 
                                 setShimmerChartData();
+
+                                if(records.size()==0){
+                                    Toast.makeText(getContext(),"Aucun enregistrement lié à cette période ou période choisie incorrecte",Toast.LENGTH_LONG).show();
+                                }
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.show();

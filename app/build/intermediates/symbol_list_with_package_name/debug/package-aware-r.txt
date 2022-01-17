@@ -11,6 +11,7 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim apptext_anim
 anim btn_checkbox_to_checked_box_inner_merged_animation
 anim btn_checkbox_to_checked_box_outer_merged_animation
 anim btn_checkbox_to_checked_icon_null_animation
@@ -33,6 +34,8 @@ anim nav_default_enter_anim
 anim nav_default_exit_anim
 anim nav_default_pop_enter_anim
 anim nav_default_pop_exit_anim
+anim sound_anim
+anim title_anim
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -481,6 +484,22 @@ attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
 attr logo
 attr logoDescription
+attr lottie_autoPlay
+attr lottie_cacheComposition
+attr lottie_colorFilter
+attr lottie_enableMergePathsForKitKatAndAbove
+attr lottie_fallbackRes
+attr lottie_fileName
+attr lottie_imageAssetsFolder
+attr lottie_loop
+attr lottie_progress
+attr lottie_rawRes
+attr lottie_renderMode
+attr lottie_repeatCount
+attr lottie_repeatMode
+attr lottie_scale
+attr lottie_speed
+attr lottie_url
 attr materialButtonStyle
 attr materialCardViewStyle
 attr maxAcceleration
@@ -1314,6 +1333,7 @@ drawable ic_play_arrow_black_24dp
 drawable ic_repeat
 drawable ic_repeat_black
 drawable ic_replay_black_24dp
+drawable ic_save
 drawable ic_save_black_24dp
 drawable ic_send
 drawable ic_stop
@@ -1346,6 +1366,7 @@ drawable selector_linearlayout_left
 drawable selector_linearlayout_right
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable wallpaper_portrait
 font lgc
 id ALT
 id CTRL
@@ -1425,6 +1446,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id automatic
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1435,7 +1457,6 @@ id bounce
 id btn_confirm_file_picker
 id btn_go_back_file_picker
 id btn_selected_all_file_picker
-id buttonDateLayout
 id buttonPanel
 id cache_measures
 id cancel_button
@@ -1493,7 +1514,6 @@ id easeInOut
 id easeOut
 id edit_query
 id end
-id endDateDescription
 id endingDate
 id enterAlways
 id enterAlwaysCollapsed
@@ -1516,6 +1536,7 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id hardware
 id hint_tv
 id home
 id homeAsUp
@@ -1552,6 +1573,7 @@ id listMode
 id listViewRecords
 id list_item
 id ll_tool_bar_file_picker
+id lottie_layer_name
 id masked
 id message
 id mic_button
@@ -1599,10 +1621,11 @@ id radio
 id ratio
 id rb_list_file_picker
 id rectangles
-id resetDate
 id resetDateTest
 id reset_button
 id reset_date_layout
+id restart
+id reverse
 id reverseSawtooth
 id right
 id right_icon
@@ -1647,7 +1670,11 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id software
 id spacer
+id splashapptext
+id splashsound
+id splashtitle
 id spline
 id split_action_bar
 id spread
@@ -1658,7 +1685,6 @@ id src_in
 id src_over
 id standard
 id start
-id startDate
 id startHorizontal
 id startVertical
 id startingDate
@@ -1717,7 +1743,6 @@ id useLogo
 id viewFlipper
 id view_offset_helper
 id visible
-id waveHeader
 id withText
 id wrap
 id wrap_content
@@ -1777,6 +1802,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_splash
 layout custom_dialog
 layout custom_dialog_info
 layout design_bottom_navigation_item
@@ -1822,6 +1848,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap icon
 navigation mobile_navigation
+raw sound
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2463,6 +2490,7 @@ styleable Layout android_orientation android_layout_width android_layout_height 
 styleable LinearLayoutCompat android_gravity android_orientation android_baselineAligned android_baselineAlignedChildIndex android_weightSum divider dividerPadding measureWithLargestChild showDividers
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
+styleable LottieAnimationView lottie_autoPlay lottie_cacheComposition lottie_colorFilter lottie_enableMergePathsForKitKatAndAbove lottie_fallbackRes lottie_fileName lottie_imageAssetsFolder lottie_loop lottie_progress lottie_rawRes lottie_renderMode lottie_repeatCount lottie_repeatMode lottie_scale lottie_speed lottie_url
 styleable MaterialButton android_insetLeft android_insetRight android_insetTop android_insetBottom backgroundTint backgroundTintMode cornerRadius icon iconGravity iconPadding iconSize iconTint iconTintMode rippleColor strokeColor strokeWidth
 styleable MaterialCardView strokeColor strokeWidth
 styleable MaterialComponentsTheme bottomSheetDialogTheme bottomSheetStyle chipGroupStyle chipStandaloneStyle chipStyle colorAccent colorBackgroundFloating colorPrimary colorPrimaryDark colorSecondary editTextStyle floatingActionButtonStyle materialButtonStyle materialCardViewStyle navigationViewStyle scrimBackground snackbarButtonStyle tabStyle textAppearanceBody1 textAppearanceBody2 textAppearanceButton textAppearanceCaption textAppearanceHeadline1 textAppearanceHeadline2 textAppearanceHeadline3 textAppearanceHeadline4 textAppearanceHeadline5 textAppearanceHeadline6 textAppearanceOverline textAppearanceSubtitle1 textAppearanceSubtitle2 textInputStyle

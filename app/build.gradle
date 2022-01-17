@@ -87,6 +87,9 @@ dependencies {
 
     implementation 'com.scwang.wave:MultiWaveHeader:1.0.0-alpha-1'
 
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
 //    compile 'com.writingminds:FFmpegAndroid:0.3.2'
     //implementation 'com.arthenica:mobile-ffmpeg-full:4.3.1'
 //    implementation 'nl.bravobit:android-ffmpeg:1.1.7'

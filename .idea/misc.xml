@@ -16,6 +16,7 @@
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_play_arrow_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_repeat.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_replay_black_24dp.xml" value="0.3828125" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_save.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_save_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_send.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_stop.xml" value="0.30052083333333335" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/semi_rounded_border.xml" value="0.2484375" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout-v21/fragment_shimmer.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/custom_dialog_info.xml" value="0.365036231884058" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_enregistrement.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_history.xml" value="0.25" />
@@ -37,6 +39,7 @@
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/homedebase.xml" value="0.22" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/liste_view_item.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/rounded_border.xml" value="0.3605072463768116" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2043859649122807" />
         <entry key="app/src/main/res/drawable/ic_save_black_24dp.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/fragment_enregistrement.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.20742753623188406" />

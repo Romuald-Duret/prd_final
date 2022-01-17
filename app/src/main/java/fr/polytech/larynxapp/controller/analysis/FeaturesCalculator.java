@@ -3,6 +3,8 @@ package fr.polytech.larynxapp.controller.analysis;
 import android.content.Context;
 import android.util.Log;
 
+import com.github.mikephil.charting.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import fr.polytech.larynxapp.model.audio.AudioData;
@@ -176,7 +178,6 @@ public class FeaturesCalculator {
 			amplitudes.add(amplitude);
 			minAmp = 9999;
 		}
-///Math.log(10)
 		for(int j = 0; j < amplitudes.size() - 1; j++){
 			double element = Math.abs(20*(Math.log(amplitudes.get(j+1)/amplitudes.get(j))));
 			sum = sum + element;
@@ -307,6 +308,35 @@ public class FeaturesCalculator {
 		}
 		pitchPositions.clear();
 		return pitches;
+	}
+
+
+	public double getJitterv2(){
+		double size = (double) this.periods.size();
+		double d = Utils.DOUBLE_EPSILON;
+		double d2 = 0.0d;
+		int i = 0;
+		while (i < this.periods.size() - 1) {
+			int i2 = i + 1;
+			double abs = (double) Math.abs(this.periods.get(i).intValue() - this.periods.get(i2).intValue());
+			Double.isNaN(abs);
+			d += abs;
+			double intValue = (double) this.periods.get(i).intValue();
+			Double.isNaN(intValue);
+			d2 += intValue;
+			i = i2;
+		}
+		if (!this.periods.isEmpty()) {
+			List<Integer> list = this.periods;
+			double intValue2 = (double) list.get(list.size() - 1).intValue();
+			Double.isNaN(intValue2);
+			d2 += intValue2;
+		}
+		Double.isNaN(size);
+		double d3 = d2 / size;
+		Double.isNaN(size);
+		return (d / (size - 1.0d)) / d3;
+
 	}
 
 }

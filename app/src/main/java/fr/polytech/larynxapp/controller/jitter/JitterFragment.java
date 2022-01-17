@@ -2,6 +2,7 @@ package fr.polytech.larynxapp.controller.jitter;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import fr.polytech.larynxapp.R;
@@ -29,6 +32,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -46,33 +51,19 @@ public class JitterFragment extends Fragment {
     private List<Record> records;
 
     /**
-     * The startDate Button
+     * the reset Layout
      */
-    private ImageView startDateButton;
+    private LinearLayout resetLayout;
 
 
-    private ImageView resetButton;
+    private LinearLayout startingDateLayout;
+    private LinearLayout endingDateLayout;
 
+    private LocalDate startdate;
+    private LocalDate endingdate;
 
-
-    /**
-     * The startDate
-     */
-    private int startDateDay;
-    private int startDateMonth;
-    private int startDateYear;
-
-    /**
-     * The endDate
-     */
-    private int endDateDay;
-    private int endDateMonth;
-    private int endDateYear;
-
-    /**
-     * The datePicker
-     */
-    private DatePicker datePicker;
+    private TextView textstartdate;
+    private TextView textenddate;
 
     /**
      * @param inflater Used to load the xml layout file as View
@@ -88,9 +79,28 @@ public class JitterFragment extends Fragment {
 
         records = new DBManager(getContext()).query();
 
-        startDateButton = root.findViewById(R.id.startDate);
-        resetButton = root.findViewById(R.id.resetDate);
-        initDateButton();
+        //Initialization of period for the chart
+        startingDateLayout = root.findViewById(R.id.startingDate);
+        endingDateLayout = root.findViewById(R.id.endingDate);
+        textstartdate = root.findViewById(R.id.textstartdate);
+        textenddate = root.findViewById(R.id.textenddate);
+
+        setPeriodChart();
+
+        resetLayout = root.findViewById(R.id.reset_date_layout);
+        resetLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                records = new DBManager(getContext()).query();
+                setJitterChartData();
+
+                startdate = null;
+                endingdate = null;
+
+                textenddate.setText("--/--/----");
+                textstartdate.setText("--/--/----");
+            }
+        });
         //******************************Creation of the jitter's chart******************************/
         final TextView jitterTextView = root.findViewById(R.id.jitter_text_view);
         jitterTextView.setText("Analyse Jitter");
@@ -195,7 +205,7 @@ public class JitterFragment extends Fragment {
         xAxis.setAxisLineColor(Color.BLACK);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(12f);
-        xAxis.setLabelCount(5); // max number of visible labels on screen (without -> overlapping labels)
+        xAxis.setLabelCount(4); // max number of visible labels on screen (without -> overlapping labels)
 
         chart.getLegend().setEnabled(false);
         chart.getDescription().setEnabled(false);
@@ -205,23 +215,20 @@ public class JitterFragment extends Fragment {
     /**
      * init the select date buttons
      */
-    private void initDateButton() {
-        startDateButton.setOnClickListener(new View.OnClickListener() {
+    public void setPeriodChart(){
+
+        startingDateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                records = new DBManager(getContext()).query();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int month = calendar.get(Calendar.MONTH);
                 int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                startDateYear = year;
-                                startDateMonth = month + 1;
-                                startDateDay = day;
-
                                 String dateDay = String.valueOf(day);
                                 String dateMonth = String.valueOf(month+1);
                                 if(day < 10){
@@ -231,14 +238,28 @@ public class JitterFragment extends Fragment {
                                     dateMonth = "0" + dateMonth;
                                 }
 
+
+                                //Process the file name
                                 String test = dateDay +"-" + dateMonth + "-" + year;
+
+                                textstartdate.setText(dateDay+"/"+dateMonth+"/"+year);
+
+                                startdate = LocalDate.parse(test, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
                                 for(int i = 0; i < records.size(); i++){
                                     String tmp = records.get(i).getName().split(" ")[0];
-                                    if(!test.equals(tmp)){
+                                    LocalDate tmpdate = LocalDate.parse(tmp, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                    if(tmpdate.isAfter(endingdate)){
                                         records.remove(i);
                                         i--;
                                     }
+                                }
+
+                                setJitterChartData();
+
+                                if(records.size()==0){
+                                    Toast.makeText(getContext(),"Aucun enregistrement lié à cette période ou période choisie incorrecte",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }, year, month, dayOfMonth);
@@ -246,12 +267,62 @@ public class JitterFragment extends Fragment {
             }
         });
 
-        resetButton.setOnClickListener(new View.OnClickListener() {
+
+
+        endingDateLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setJitterChartData();
+
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.O)
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                String dateDay = String.valueOf(day);
+                                String dateMonth = String.valueOf(month+1);
+                                if(day < 10){
+                                    dateDay = "0" + dateDay;
+                                }
+                                if(month < 10){
+                                    dateMonth = "0" + dateMonth;
+                                }
+
+
+                                //Process the file name
+                                String test = dateDay +"-" + dateMonth + "-" + year;
+                                textenddate.setText(dateDay+"/"+dateMonth+"/"+year);
+
+                                endingdate = LocalDate.parse(test, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                for(int i = 0; i < records.size(); i++){
+                                    String tmp = records.get(i).getName().split(" ")[0];
+                                    LocalDate tmpdate = LocalDate.parse(tmp, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
+                                    if(tmpdate.isAfter(endingdate)){
+                                        records.remove(i);
+                                        i--;
+                                    }
+                                }
+
+                                setJitterChartData();
+
+                                if(records.size()==0){
+                                    Toast.makeText(getContext(),"Aucun enregistrement lié à cette période ou période choisie incorrecte",Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        }, year, month, dayOfMonth);
+                datePickerDialog.show();
+
             }
         });
+
+
+
 
     }
 }

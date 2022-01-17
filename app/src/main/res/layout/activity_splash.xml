@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/wallpaper_portrait"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/splashtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lgc"
+        android:text="Larynx"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="80sp"
+        android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="55dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/splashsound"
+                app:lottie_rawRes="@raw/sound"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true">
+
+            </com.airbnb.lottie.LottieAnimationView>
+
+            <TextView
+                android:id="@+id/splashapptext"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/lgc"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:text="App"/>
+        </LinearLayout>
+
+
+
+</RelativeLayout>
