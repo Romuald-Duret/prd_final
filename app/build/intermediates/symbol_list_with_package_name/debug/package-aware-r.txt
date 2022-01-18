@@ -11,6 +11,36 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim animate_card_enter
+anim animate_card_exit
+anim animate_diagonal_right_enter
+anim animate_diagonal_right_exit
+anim animate_fade_enter
+anim animate_fade_exit
+anim animate_in_out_enter
+anim animate_in_out_exit
+anim animate_shrink_enter
+anim animate_shrink_exit
+anim animate_slide_down_enter
+anim animate_slide_down_exit
+anim animate_slide_in_left
+anim animate_slide_left_enter
+anim animate_slide_left_exit
+anim animate_slide_out_right
+anim animate_slide_up_enter
+anim animate_slide_up_exit
+anim animate_spin_enter
+anim animate_spin_exit
+anim animate_split_enter
+anim animate_split_exit
+anim animate_swipe_left_enter
+anim animate_swipe_left_exit
+anim animate_swipe_right_enter
+anim animate_swipe_right_exit
+anim animate_windmill_enter
+anim animate_windmill_exit
+anim animate_zoom_enter
+anim animate_zoom_exit
 anim apptext_anim
 anim btn_checkbox_to_checked_box_inner_merged_animation
 anim btn_checkbox_to_checked_box_outer_merged_animation
@@ -529,15 +559,6 @@ attr motion_postLayoutCollision
 attr motion_triggerOnCollision
 attr moveWhenScrollAtTop
 attr multiChoiceItemLayout
-attr mwhCloseColor
-attr mwhColorAlpha
-attr mwhGradientAngle
-attr mwhIsRunning
-attr mwhProgress
-attr mwhStartColor
-attr mwhVelocity
-attr mwhWaveHeight
-attr mwhWaves
 attr navGraph
 attr navigationContentDescription
 attr navigationIcon
@@ -1355,9 +1376,7 @@ id ALT
 id CTRL
 id FUNCTION
 id META
-id MultiWave
 id NO_DEBUG
-id PairWave
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
@@ -2107,8 +2126,6 @@ style FilePickerThemeReply
 style FilePickerThemeReplyButtonStyle
 style FilePickerThemeShrine
 style FilePickerThemeShrineButtonStyle
-style MultiWaveHeader
-style MultiWaveHeader_Wave
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents
@@ -2486,7 +2503,6 @@ styleable MotionHelper onHide onShow
 styleable MotionLayout applyMotionScene currentState layoutDescription motionDebug motionProgress showPaths
 styleable MotionScene defaultDuration layoutDuringTransition
 styleable MotionTelltales telltales_tailColor telltales_tailScale telltales_velocityMode
-styleable MultiWaveHeader mwhCloseColor mwhColorAlpha mwhGradientAngle mwhIsRunning mwhProgress mwhStartColor mwhVelocity mwhWaveHeight mwhWaves
 styleable NavAction android_id destination enterAnim exitAnim launchSingleTop popEnterAnim popExitAnim popUpTo popUpToInclusive
 styleable NavArgument android_name android_defaultValue argType nullable
 styleable NavDeepLink android_autoVerify uri

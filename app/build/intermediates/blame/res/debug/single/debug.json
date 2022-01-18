@@ -124,12 +124,12 @@
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_linearlayout_left.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\selector_linearlayout_left.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
