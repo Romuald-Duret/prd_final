@@ -320,7 +320,6 @@ public class HomeFragment extends Fragment {
             case FINISH:
                 progressBar.setVisibility(View.INVISIBLE);
                 include_layout.setDisplayedChild(1);
-                icon_mic.setBackgroundResource(R.drawable.ic_save_black_24dp);
                 hintTV.setText("Enregistrement terminé. Appuyez sur une icone pour recommencer ou sauvegarder l'enregistrement");
                 button_save.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {

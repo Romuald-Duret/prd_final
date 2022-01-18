@@ -1,4 +1,4 @@
-#Mon Jan 17 13:57:37 CET 2022
+#Mon Jan 17 19:28:46 CET 2022
 base.1=C\:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
 path.1=classes.dex
 base.0=C\:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex

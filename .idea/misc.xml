@@ -4,15 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Karma/AppData/Local/Android/Sdk/platforms/android-29/data/res/layout/simple_list_item_1.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/bottom_nav_icon_color_selector.xml" value="0.20921052631578949" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/ic_repeat_black.xml" value="0.2484375" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/background_button.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/border.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_calendar.xml" value="0.2484375" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_check_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_circle.xml" value="0.3828125" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3223684210526316" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_date_range_black_24dp.xml" value="0.3223684210526316" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_history_black_24dp.xml" value="0.20921052631578949" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.20921052631578949" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic_old.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_microphone.xml" value="0.3828125" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_play_arrow_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_repeat.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_replay_black_24dp.xml" value="0.3828125" />
@@ -21,6 +30,8 @@
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_send.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_stop.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_stop_black_24dp.xml" value="0.3828125" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_trending_up_black_24dp.xml" value="0.3223684210526316" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/mic_button.xml" value="0.3223684210526316" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/rounded_border.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/selector_linearlayout.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/selector_linearlayout_left.xml" value="0.3828125" />
