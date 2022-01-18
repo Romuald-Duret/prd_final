@@ -164,6 +164,6 @@
     <orderEntry type="library" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.github.PhilJay:MPAndroidChart:v3.1.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: me.rosuh:AndroidFilePicker:0.7.0-x@aar" level="project" />
-    <orderEntry type="library" name="Gradle: com.scwang.wave:MultiWaveHeader:1.0.0-alpha-1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.mohammadatif:Animatoo:master@aar" level="project" />
   </component>
 </module>

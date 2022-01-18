@@ -17,6 +17,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.w3c.dom.Text;
@@ -63,6 +64,8 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(intent);
+                Animatoo.animateSlideDown(SplashScreen.this);
+
                 finish();
             }
         }, 3500);

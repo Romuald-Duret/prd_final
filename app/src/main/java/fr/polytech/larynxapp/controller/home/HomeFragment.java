@@ -27,8 +27,6 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.scwang.wave.MultiWaveHeader;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
