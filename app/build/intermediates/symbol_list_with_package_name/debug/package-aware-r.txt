@@ -76,6 +76,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+animator scale_with_alpha
 array crane_swl_colors
 array rail_swl_colors
 array reply_swl_colors
@@ -214,6 +215,15 @@ attr chipStartPadding
 attr chipStrokeColor
 attr chipStrokeWidth
 attr chipStyle
+attr ci_animator
+attr ci_animator_reverse
+attr ci_drawable
+attr ci_drawable_unselected
+attr ci_gravity
+attr ci_height
+attr ci_margin
+attr ci_orientation
+attr ci_width
 attr circleRadius
 attr clickAction
 attr closeIcon
@@ -1310,6 +1320,13 @@ drawable btn_selector_file_picker_rail
 drawable btn_selector_file_picker_reply
 drawable btn_selector_file_picker_shrine
 drawable btn_style_normal_file_picker
+drawable capture1
+drawable capture2
+drawable capture21
+drawable capture22
+drawable capture3
+drawable capture4
+drawable capture5
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
 drawable design_ic_visibility
@@ -1322,6 +1339,7 @@ drawable ic_bt_file_picker
 drawable ic_calendar
 drawable ic_circle
 drawable ic_compressed_file_picker
+drawable ic_dot
 drawable ic_empty_file_list_file_picker
 drawable ic_excel_file_picker
 drawable ic_exec_file_picker
@@ -1371,6 +1389,7 @@ drawable selector_linearlayout_right
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable wallpaper_portrait
+drawable white_radius
 font lgc
 id ALT
 id CTRL
@@ -1449,6 +1468,7 @@ id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
 id automatic
+id banner_Cv
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -1472,6 +1492,7 @@ id checkbox
 id checked
 id chronometer
 id circle
+id circle_indicator
 id cl_file_browser_file_picker
 id clip_horizontal
 id clip_vertical
@@ -1529,7 +1550,6 @@ id filled
 id firstLine
 id fixed
 id flip
-id floating_button
 id forever
 id ghost_view
 id gone
@@ -1543,6 +1563,7 @@ id hint_tv
 id home
 id homeAsUp
 id honorRequest
+id horizontal
 id icon
 id icon_group
 id ifRoom
@@ -1711,6 +1732,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id text_Cv
 id text_input_password_toggle
 id textenddate
 id textinput_counter
@@ -1720,6 +1742,7 @@ id textstartdate
 id time
 id title
 id titleDividerNoCustom
+id title_Cv
 id title_template
 id toggle
 id top
@@ -1738,11 +1761,14 @@ id tv_empty_list
 id tv_list_file_picker
 id tv_toolbar_title_file_picker
 id unchecked
+id understand_button
 id uniform
 id unlabeled
 id up
 id useLogo
+id vertical
 id viewFlipper
+id viewPager
 id view_offset_helper
 id visible
 id withText
@@ -1803,8 +1829,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_dialoghint
 layout activity_main
 layout activity_splash
+layout card_item
 layout custom_dialog
 layout custom_dialog_info
 layout design_bottom_navigation_item
@@ -2285,6 +2313,7 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
+style Theme_UserDialog
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark
@@ -2447,6 +2476,7 @@ styleable AppCompatSeekBar android_thumb tickMark tickMarkTint tickMarkTintMode
 styleable AppCompatTextHelper android_textAppearance android_drawableTop android_drawableBottom android_drawableLeft android_drawableRight android_drawableStart android_drawableEnd
 styleable AppCompatTextView android_textAppearance autoSizeMaxTextSize autoSizeMinTextSize autoSizePresetSizes autoSizeStepGranularity autoSizeTextType drawableBottomCompat drawableEndCompat drawableLeftCompat drawableRightCompat drawableStartCompat drawableTint drawableTintMode drawableTopCompat firstBaselineToTopHeight fontFamily fontVariationSettings lastBaselineToBottomHeight lineHeight textAllCaps textLocale
 styleable AppCompatTheme android_windowIsFloating android_windowAnimationStyle actionBarDivider actionBarItemBackground actionBarPopupTheme actionBarSize actionBarSplitStyle actionBarStyle actionBarTabBarStyle actionBarTabStyle actionBarTabTextStyle actionBarTheme actionBarWidgetTheme actionButtonStyle actionDropDownStyle actionMenuTextAppearance actionMenuTextColor actionModeBackground actionModeCloseButtonStyle actionModeCloseDrawable actionModeCopyDrawable actionModeCutDrawable actionModeFindDrawable actionModePasteDrawable actionModePopupWindowStyle actionModeSelectAllDrawable actionModeShareDrawable actionModeSplitBackground actionModeStyle actionModeWebSearchDrawable actionOverflowButtonStyle actionOverflowMenuStyle activityChooserViewStyle alertDialogButtonGroupStyle alertDialogCenterButtons alertDialogStyle alertDialogTheme autoCompleteTextViewStyle borderlessButtonStyle buttonBarButtonStyle buttonBarNegativeButtonStyle buttonBarNeutralButtonStyle buttonBarPositiveButtonStyle buttonBarStyle buttonStyle buttonStyleSmall checkboxStyle checkedTextViewStyle colorAccent colorBackgroundFloating colorButtonNormal colorControlActivated colorControlHighlight colorControlNormal colorError colorPrimary colorPrimaryDark colorSwitchThumbNormal controlBackground dialogCornerRadius dialogPreferredPadding dialogTheme dividerHorizontal dividerVertical dropDownListViewStyle dropdownListPreferredItemHeight editTextBackground editTextColor editTextStyle homeAsUpIndicator imageButtonStyle listChoiceBackgroundIndicator listChoiceIndicatorMultipleAnimated listChoiceIndicatorSingleAnimated listDividerAlertDialog listMenuViewStyle listPopupWindowStyle listPreferredItemHeight listPreferredItemHeightLarge listPreferredItemHeightSmall listPreferredItemPaddingEnd listPreferredItemPaddingLeft listPreferredItemPaddingRight listPreferredItemPaddingStart panelBackground panelMenuListTheme panelMenuListWidth popupMenuStyle popupWindowStyle radioButtonStyle ratingBarStyle ratingBarStyleIndicator ratingBarStyleSmall searchViewStyle seekBarStyle selectableItemBackground selectableItemBackgroundBorderless spinnerDropDownItemStyle spinnerStyle switchStyle textAppearanceLargePopupMenu textAppearanceListItem textAppearanceListItemSecondary textAppearanceListItemSmall textAppearancePopupMenuHeader textAppearanceSearchResultSubtitle textAppearanceSearchResultTitle textAppearanceSmallPopupMenu textColorAlertDialogListItem textColorSearchUrl toolbarNavigationButtonStyle toolbarStyle tooltipForegroundColor tooltipFrameBackground viewInflaterClass windowActionBar windowActionBarOverlay windowActionModeOverlay windowFixedHeightMajor windowFixedHeightMinor windowFixedWidthMajor windowFixedWidthMinor windowMinWidthMajor windowMinWidthMinor windowNoTitle
+styleable BaseCircleIndicator ci_animator ci_animator_reverse ci_drawable ci_drawable_unselected ci_gravity ci_height ci_margin ci_orientation ci_width
 styleable BottomAppBar backgroundTint fabAlignmentMode fabCradleMargin fabCradleRoundedCornerRadius fabCradleVerticalOffset hideOnScroll
 styleable BottomNavigationView elevation itemBackground itemHorizontalTranslationEnabled itemIconSize itemIconTint itemTextAppearanceActive itemTextAppearanceInactive itemTextColor labelVisibilityMode menu
 styleable BottomSheetBehavior_Layout behavior_fitToContents behavior_hideable behavior_peekHeight behavior_skipCollapsed

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="440dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_border"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="@font/lgc"
+        android:text="Informations d'utlisation"
+        android:textAlignment="center">
+
+    </TextView>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:foregroundGravity="center"
+        android:overScrollMode="never"
+        android:clipToPadding="false"/>
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circle_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:ci_drawable="@drawable/ic_dot"
+        app:ci_gravity="center"
+        app:ci_height="8dp"
+        app:ci_width="8dp"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/lgc"
+        android:clickable="false"
+        android:text="j'ai compris"
+        android:textColor="@color/gray"
+        android:background="@drawable/rounded_border"
+        android:id="@+id/understand_button"
+        android:elevation="7dp"/>
+
+</LinearLayout>

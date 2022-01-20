@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\ic_stop.xml"
     },
     {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture2.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture2.png"
+    },
+    {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_history.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\fragment_history.xml"
     },
@@ -28,6 +32,10 @@
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture5.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture5.png"
+    },
+    {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_save.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\fragment_save.xml"
     },
@@ -50,6 +58,10 @@
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_shimmer.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\fragment_shimmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture22.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture22.png"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_dialog_info.xml.flat",
@@ -80,8 +92,20 @@
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
     },
     {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item.xml.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\card_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\font_lgc.ttf.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\font\\lgc.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_dot.xml.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\ic_dot.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dialoghint.xml.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\activity_dialoghint.xml"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -94,6 +118,10 @@
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\anim_apptext_anim.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\anim\\apptext_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture21.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture21.png"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
@@ -124,12 +152,12 @@
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_linearlayout_left.xml.flat",
-        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\selector_linearlayout_left.xml"
-    },
-    {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_linearlayout_left.xml.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\selector_linearlayout_left.xml"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -142,6 +170,14 @@
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_enregistrement.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\layout\\fragment_enregistrement.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture3.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture3.png"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture1.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture1.png"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_bottom_nav_icon_color_selector.xml.flat",
@@ -190,6 +226,10 @@
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\anim_title_anim.xml.flat",
         "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\anim\\title_anim.xml"
+    },
+    {
+        "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_capture4.png.flat",
+        "source": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\src\\main\\res\\drawable\\capture4.png"
     },
     {
         "merged": "C:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",

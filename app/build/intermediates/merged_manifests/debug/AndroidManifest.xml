@@ -37,6 +37,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="fr.polytech.larynxapp.controller.DialogHint.DialogHint"
+            android:theme="@style/Theme.UserDialog" >
+        </activity>
+        <activity
             android:name="fr.polytech.larynxapp.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >

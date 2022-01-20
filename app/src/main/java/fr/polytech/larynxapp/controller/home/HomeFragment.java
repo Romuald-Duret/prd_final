@@ -66,6 +66,13 @@ import fr.polytech.larynxapp.model.database.DBManager;
 
 public class HomeFragment extends Fragment {
 
+
+    /**
+     *
+     * ATTRIBUTES
+     *
+     */
+
     private ViewFlipper include_layout;
 
     private TextView hintTV;
@@ -190,6 +197,12 @@ public class HomeFragment extends Fragment {
     private TarsosDSPAudioFormat AUDIO_FORMAT;
 
     /**
+     *
+     * GETTERS AND SETTERS
+     *
+     */
+
+    /**
      * the shimmer's setter
      * @param shimmer shimmer
      */
@@ -220,6 +233,9 @@ public class HomeFragment extends Fragment {
     public double getJitter() {
         return jitter;
     }
+
+
+
 
 
     /**

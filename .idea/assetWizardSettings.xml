@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_save" />
-                            <entry key="sourceFile" value="C:\Users\Karma\Downloads\save.svg" />
+                            <entry key="outputName" value="ic_dot" />
+                            <entry key="sourceFile" value="C:\Users\Karma\Downloads\dot.svg" />
                           </map>
                         </option>
                       </PersistentState>

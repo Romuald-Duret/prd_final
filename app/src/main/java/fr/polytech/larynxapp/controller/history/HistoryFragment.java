@@ -36,8 +36,6 @@ import java.util.List;
 
 public class HistoryFragment extends Fragment {
 
-    private FloatingActionButton floatingButton;
-
     /**
      * The UI list of the data
      */
@@ -75,9 +73,6 @@ public class HistoryFragment extends Fragment {
         }
 
 
-        //floating action button
-        floatingButton = root.findViewById(R.id.floating_button);
-        //floatingButton.setImageResource(R.drawable.ic_send);
 
 
         //***********************************Creation of the list**********************************/
@@ -184,11 +179,11 @@ public class HistoryFragment extends Fragment {
             shimmervalue.setText(((Double)round(record.getShimmer(),2)).toString());
 
             if(record.getShimmer()<0.3){
-                shimmerview.setBackgroundColor(Color.GREEN);
+                shimmerview.setBackgroundColor(Color.parseColor("#00cec1"));
             }else if(record.getShimmer()>= 0.3 && record.getShimmer()<= 0.4){
-                shimmerview.setBackgroundColor(Color.YELLOW);
+                shimmerview.setBackgroundColor(Color.parseColor("#009cff"));
             }else{
-                shimmerview.setBackgroundColor(Color.RED);
+                shimmerview.setBackgroundColor(Color.parseColor("#a404c5"));
             }
 
 
@@ -199,11 +194,11 @@ public class HistoryFragment extends Fragment {
             jittervalue.setText(((Double)round(record.getJitter(),2)).toString()+"%");
 
             if(record.getJitter()<1.5){
-                jitterview.setBackgroundColor(Color.GREEN);
+                jitterview.setBackgroundColor(Color.parseColor("#00cec1"));
             }else if(record.getJitter()>= 1.5 && record.getJitter()<= 2.5){
-                jitterview.setBackgroundColor(Color.YELLOW);
+                jitterview.setBackgroundColor(Color.parseColor("#009cff"));
             }else{
-                jitterview.setBackgroundColor(Color.RED);
+                jitterview.setBackgroundColor(Color.parseColor("#a404c5"));
             }
 
             Button cancelbttn = dialog.findViewById(R.id.cancel_button);

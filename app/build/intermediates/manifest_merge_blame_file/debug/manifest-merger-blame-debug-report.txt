@@ -25,11 +25,11 @@
 15-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:11:22-77
 16
 17    <application
-17-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:10:5-41:19
+17-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:10:5-46:19
 18        android:allowBackup="true"
 18-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:11:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.3.1] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\1db509fd09a372bd83204c971594dc0e\core-1.3.1\AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.3.2] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\60c4423963b07ca043f83159887e58fd\core-1.3.2\AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/icon"
 21-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:12:9-36
@@ -66,39 +66,46 @@
 37            </intent-filter>
 38        </activity>
 39        <activity
-39-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:31:9-38:20
-40            android:name="fr.polytech.larynxapp.MainActivity"
-40-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:32:13-41
-41            android:label="@string/app_name"
-41-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:33:13-45
-42            android:screenOrientation="portrait" >
-42-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:34:13-49
-43            <intent-filter>
-43-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:35:13-37:29
-44                <action android:name="android.intent.action.MAIN" />
-44-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:24:17-69
-44-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:24:25-66
-45            </intent-filter>
-46        </activity>
-47        <activity
-47-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:15:9-18:72
-48            android:name="me.rosuh.filepicker.FilePickerActivity"
-48-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:16:13-66
-49            android:configChanges="orientation|screenSize"
-49-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:17:13-59
-50            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-50-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:18:13-69
-51
-52        <provider
-52-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
-53            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-53-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
-54            android:authorities="fr.polytech.larynxapp.lifecycle-process"
-54-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
-55            android:exported="false"
-55-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
-56            android:multiprocess="true" />
-56-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
-57    </application>
-58
-59</manifest>
+39-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:31:9-34:20
+40            android:name="fr.polytech.larynxapp.controller.DialogHint.DialogHint"
+40-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:31:19-67
+41            android:theme="@style/Theme.UserDialog" >
+41-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:32:13-52
+42        </activity>
+43        <activity
+43-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:36:9-43:20
+44            android:name="fr.polytech.larynxapp.MainActivity"
+44-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:37:13-41
+45            android:label="@string/app_name"
+45-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:38:13-45
+46            android:screenOrientation="portrait" >
+46-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:39:13-49
+47            <intent-filter>
+47-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:40:13-42:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:24:17-69
+48-->C:\Users\Karma\StudioProjects\prd_final\app\src\main\AndroidManifest.xml:24:25-66
+49            </intent-filter>
+50        </activity>
+51        <activity
+51-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:15:9-18:72
+52            android:name="me.rosuh.filepicker.FilePickerActivity"
+52-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:16:13-66
+53            android:configChanges="orientation|screenSize"
+53-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:17:13-59
+54            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+54-->[me.rosuh:AndroidFilePicker:0.7.0-x] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\0ef5b6bbbc656a38601a19df021c901e\jetified-AndroidFilePicker-0.7.0-x\AndroidManifest.xml:18:13-69
+55
+56        <provider
+56-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+57            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+57-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+58            android:authorities="fr.polytech.larynxapp.lifecycle-process"
+58-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+59            android:exported="false"
+59-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+60            android:multiprocess="true" />
+60-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\Karma\.gradle\caches\transforms-2\files-2.1\ba7f68ef06bafb8ed69456c290dd4e39\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+61    </application>
+62
+63</manifest>

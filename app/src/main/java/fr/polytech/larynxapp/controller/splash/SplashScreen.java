@@ -58,7 +58,6 @@ public class SplashScreen extends AppCompatActivity {
         splashAppText.setAnimation(appTextAnim);
         splashSound.setAnimation(soundAnim);
 
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -52,19 +52,19 @@ public class ListAdapter extends ArrayAdapter<Record> {
             }
 
             if(p.getShimmer()<0.3){
-                stv.setBackgroundColor(Color.GREEN);
+                stv.setBackgroundColor(Color.parseColor("#00cec1"));//Color.GREEN
             }else if(p.getShimmer()>= 0.3 && p.getShimmer()<= 0.4){
-                stv.setBackgroundColor(Color.YELLOW);
+                stv.setBackgroundColor(Color.parseColor("#009cff"));//Color.YELLOW
             }else{
-                stv.setBackgroundColor(Color.RED);
+                stv.setBackgroundColor(Color.parseColor("#a404c5"));//Color.RED
             }
 
             if(p.getJitter()<1.5){
-                jtv.setBackgroundColor(Color.GREEN);
+                jtv.setBackgroundColor(Color.parseColor("#00cec1"));
             }else if(p.getJitter()>= 1.5 && p.getJitter()<= 2.5){
-                jtv.setBackgroundColor(Color.YELLOW);
+                jtv.setBackgroundColor(Color.parseColor("#009cff"));
             }else{
-                jtv.setBackgroundColor(Color.RED);
+                jtv.setBackgroundColor(Color.parseColor("#a404c5"));
             }
 
         }
