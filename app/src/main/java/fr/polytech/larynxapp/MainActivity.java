@@ -1,6 +1,8 @@
 package fr.polytech.larynxapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -40,7 +42,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        startActivity(new Intent(MainActivity.this, DialogHint.class));
+        SharedPreferences sharedPreferences = getSharedPreferences("larynxSettings", Context.MODE_PRIVATE);
+
+        if(sharedPreferences != null){
+            boolean dialogHinToDismiss = sharedPreferences.getBoolean("DialogHintToDismiss",false);
+
+            if(!dialogHinToDismiss){
+                startActivity(new Intent(MainActivity.this, DialogHint.class));
+            }
+
+        }else{
+            startActivity(new Intent(MainActivity.this, DialogHint.class));
+        }
+
+
     }
 
 }

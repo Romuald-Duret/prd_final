@@ -1488,6 +1488,7 @@ id center_horizontal
 id center_vertical
 id chain
 id chains
+id check_box_dialog
 id checkbox
 id checked
 id chronometer
@@ -1875,6 +1876,7 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu bottom_nav_menu
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 mipmap icon
 navigation mobile_navigation

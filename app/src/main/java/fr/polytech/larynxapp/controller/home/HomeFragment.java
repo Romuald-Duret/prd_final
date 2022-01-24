@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
@@ -73,6 +74,9 @@ public class HomeFragment extends Fragment {
      *
      */
 
+    /**
+     * Layout that change before and after the record
+     */
     private ViewFlipper include_layout;
 
     private TextView hintTV;
@@ -86,8 +90,6 @@ public class HomeFragment extends Fragment {
      *  The reset button, only appear after a full record
      */
     private Button button_restart;
-
-    private Button button_file;
 
     /**
      *  The font of the mic button, hold the button
@@ -234,10 +236,6 @@ public class HomeFragment extends Fragment {
         return jitter;
     }
 
-
-
-
-
     /**
      * create the home's view
      * @param inflater inflater Used to load the xml layout file as View
@@ -337,7 +335,9 @@ public class HomeFragment extends Fragment {
                 hintTV.setText("Enregistrement terminé. Appuyez sur une icone pour recommencer ou sauvegarder l'enregistrement");
                 button_save.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-                        //System.out.println("bouton save activé");
+
+                        Toast.makeText(getContext(),"Enregistrement sauvegardé. Vous pouvez le voir dans l'onglet 'Historique' à droite.", Toast.LENGTH_LONG).show();
+
                         save();
                         analyseData();
                         manager.updateRecordVoiceFeatures(fileName, jitter*100, shimmer, f0);
@@ -821,6 +821,12 @@ public class HomeFragment extends Fragment {
     }
 
 
+    /**
+     * Function that change a dp value to an amount of px in order to scale any graphic object you want
+     * @param dp the dp value that you want
+     * @param context Context of the activity
+     * @return
+     */
     public static int dpToPx(int dp, Context context) {
         float density = context.getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);

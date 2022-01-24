@@ -18,24 +18,54 @@ import fr.polytech.larynxapp.model.DialogModel.DialogModel;
 
 public class DialogHintAdapter extends PagerAdapter {
 
+    /**
+     * The context of the activity
+     */
     private Context context;
+
+    /**
+     * List that contains all the different page's informations
+     */
     private ArrayList<DialogModel> modelArrayList;
 
+
+    /**
+     * Constructor
+     * @param context Context of the activity
+     * @param modelArrayList List that contains all the different page's informations
+     */
     public DialogHintAdapter(Context context, ArrayList<DialogModel> modelArrayList){
         this.context = context;
         this.modelArrayList = modelArrayList;
     }
 
+    /**
+     * Give the number of pages
+     * @return the size of modelArrayList
+     */
     public int getCount(){
         return modelArrayList.size();
     }
 
+
+    /**
+     * check if the object equals the view
+     * @param view a view
+     * @param object and object
+     * @return a boolean
+     */
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view.equals(object);
     }
 
 
+    /**
+     * return a view that contains all the different cards
+     * @param container a view
+     * @param position position of the card on the view
+     * @return the view
+     */
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -60,6 +90,13 @@ public class DialogHintAdapter extends PagerAdapter {
         return view;
     }
 
+
+    /**
+     * Remove an item of a certain position on the container
+     * @param container The container
+     * @param position The position of the element to be removed
+     * @param object The card
+     */
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView((View)object);
