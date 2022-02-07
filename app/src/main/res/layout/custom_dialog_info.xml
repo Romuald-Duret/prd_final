@@ -119,7 +119,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:textSize="11sp"
-        android:text="Le seuil limite de la valeur du shimmer est de 0.35, la couleur indiquée varie avec une marge de + ou - 0.05.\nLe seuil limite de la valeur du jitter est de 2% , la couleur indiquée varie avec une marge de + ou - 0.5%.\nUn résutlat vert indique une valeur en dessous du seuil, un résultat jaune indique une valeur proche du seuil tandis qu'un résultat rouge indique une valeur au dessus du seuil."
+        android:text="Le seuil limite de la valeur du shimmer est de 0.35, la couleur indiquée varie avec une marge de + ou - 0.05.\nLe seuil limite de la valeur du jitter est de 2% , la couleur indiquée varie avec une marge de + ou - 0.5%.\nUn résutlat bleu clair indique une valeur en dessous du seuil, un résultat bleu indique une valeur proche du seuil tandis qu'un résultat violet clair indique une valeur au dessus du seuil."
 />
 
 

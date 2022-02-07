@@ -1,7 +1,7 @@
-#Mon Jan 24 23:41:36 CET 2022
-base.1=C\:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
+#Mon Feb 07 16:39:03 CET 2022
+base.1=/Users/romu/StudioProjects/prd_final/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex
 path.1=classes.dex
-base.0=C\:\\Users\\Karma\\StudioProjects\\prd_final\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.0=/Users/romu/StudioProjects/prd_final/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 path.0=classes.dex

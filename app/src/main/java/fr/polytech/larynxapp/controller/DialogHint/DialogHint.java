@@ -23,16 +23,34 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class DialogHint extends AppCompatActivity {
 
+    /**
+     * View that contains "cards"
+     */
     private ViewPager viewPager;
 
+    /**
+     * List that contains all the different page's informations
+     */
     private ArrayList<DialogModel> modelArrayList;
 
+    /**
+     * Used for create and delete cards
+     */
     private DialogHintAdapter dialogHintAdapter;
 
+    /**
+     * Button for finish the dialog's activity
+     */
     private Button understand_bttn;
 
+    /**
+     * Used for let us know if the user want to see this Dialog when he opens the app again
+     */
     private CheckBox checkbox;
 
+    /**
+     * Used for save the users settings
+     */
     private SharedPreferences sharedPreferences;
 
 
@@ -101,6 +119,9 @@ public class DialogHint extends AppCompatActivity {
         understand_bttn.setClickable(false);
     }
 
+    /**
+     * Fill the ArrayList of cards with informations
+     */
     private void loadCards() {
         modelArrayList = new ArrayList<>();
 

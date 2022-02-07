@@ -4,73 +4,51 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Karma/AppData/Local/Android/Sdk/platforms/android-29/data/res/layout/simple_list_item_1.xml" value="0.19583333333333333" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/bottom_nav_icon_color_selector.xml" value="0.20921052631578949" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable-v24/ic_repeat_black.xml" value="0.2484375" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/background_button.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/border.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_calendar.xml" value="0.2484375" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_check_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_circle.xml" value="0.3828125" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3223684210526316" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_date_range_black_24dp.xml" value="0.3223684210526316" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_dot.xml" value="0.3223684210526316" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_history_black_24dp.xml" value="0.20921052631578949" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.20921052631578949" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_mic_old.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_microphone.xml" value="0.3828125" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.20921052631578949" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_play_arrow_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_repeat.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_replay_black_24dp.xml" value="0.3828125" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_save.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_save_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_send.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_stop.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_stop_black_24dp.xml" value="0.3828125" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/ic_trending_up_black_24dp.xml" value="0.3223684210526316" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/image_border.xml" value="0.3223684210526316" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/mic_button.xml" value="0.3223684210526316" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/rounded_border.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/selector_linearlayout.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/selector_linearlayout_left.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/selector_linearlayout_right.xml" value="0.3828125" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/drawable/semi_rounded_border.xml" value="0.2484375" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout-v21/fragment_shimmer.xml" value="0.33" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/activity_dialoghint.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/activity_splash.xml" value="0.22" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/card_item.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/custom_dialog_info.xml" value="0.365036231884058" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_enregistrement.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_history.xml" value="0.25" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_jitter.xml" value="0.25" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_save.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_shimmer.xml" value="0.22" />
+        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/fragment_shimmer.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/homedebase.xml" value="0.22" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/liste_view_item.xml" value="0.33" />
         <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/layout/rounded_border.xml" value="0.3605072463768116" />
-        <entry key="..\:/Users/Karma/StudioProjects/prd_final/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2043859649122807" />
         <entry key="app/src/main/res/drawable/ic_save_black_24dp.xml" value="0.2598958333333333" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2318840579710145" />
+        <entry key="app/src/main/res/layout/custom_dialog_info.xml" value="0.17572463768115942" />
         <entry key="app/src/main/res/layout/fragment_enregistrement.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_jitter.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_jitter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_save.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/fragment_shimmer.xml" value="0.165" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13958333333333334" />
       </map>
     </option>
-  </component>
-  <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/OneDrive/Bureau" />
-    <option name="OPTION_SCOPE" value="private" />
-    <option name="OPTION_DOCUMENT_TAG_USE" value="true" />
-    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="true" />
-    <option name="OPTION_DOCUMENT_TAG_VERSION" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
